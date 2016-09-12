@@ -13,32 +13,11 @@
 	return Validate;
 }
 
-- (void)textViewDidEndEditing:(UITextView *)textView
-{
-	BOOL validate = NO;
-	//验证条件
-	return Validate;
-}
-
 ```
 实现UITextField的delegate方法
 
 ```
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-	BOOL validate = NO;
-	//验证条件
-	return Validate;
-}
-
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-	BOOL validate = NO;
-	//验证条件
-	return Validate;
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
 	BOOL validate = NO;
 	//验证条件
