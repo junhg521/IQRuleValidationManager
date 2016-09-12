@@ -6,6 +6,9 @@
 //
 
 #import "UITextView+RuleAddition.h"
+#import "IQRuleValidationManager.h"
+#import "IQSwizzleUtils.h"
+#import "UITextView+RuleOperation.h"
 #import <objc/runtime.h>
 
 static char kAssociatedTextViewRuleManagerKey;
@@ -15,6 +18,48 @@ static char kAssociatedTextViewRuleManagerKey;
 @dynamic minRuleLength;
 @dynamic ruleType;
 @dynamic ruleManagerClassName;
+
+#pragma mark ClassMethod
+
++ (void)load
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [IQSwizzleUtils lookforSwizzledProtocolName:"UITextViewDelegate"
+                                   originalSelector:@selector(textViewShouldBeginEditing:)
+                                      swizzledClass:[UITextView class]
+                                   swizzledSelector:@selector(ruleValidationTextViewShouldBeginEditing:)];
+        [IQSwizzleUtils lookforSwizzledProtocolName:"UITextViewDelegate"
+                                   originalSelector:@selector(textViewShouldEndEditing:)
+                                      swizzledClass:[UITextView class]
+                                   swizzledSelector:@selector(ruleValidationTextViewShouldEndEditing:)];
+        [IQSwizzleUtils lookforSwizzledProtocolName:"UITextViewDelegate"
+                                   originalSelector:@selector(textViewDidBeginEditing:)
+                                      swizzledClass:[UITextView class]
+                                   swizzledSelector:@selector(ruleValidationTextViewDidBeginEditing:)];
+        [IQSwizzleUtils lookforSwizzledProtocolName:"UITextViewDelegate"
+                                   originalSelector:@selector(textView:shouldChangeTextInRange:replacementText:)
+                                      swizzledClass:[UITextView class]
+                                   swizzledSelector:@selector(ruleValidationTextView:shouldChangeTextInRange:replacementText:)];
+        [IQSwizzleUtils lookforSwizzledProtocolName:"UITextViewDelegate"
+                                   originalSelector:@selector(textViewDidChange:)
+                                      swizzledClass:[UITextView class]
+                                   swizzledSelector:@selector(ruleValidationTextViewDidChange:)];
+        [IQSwizzleUtils lookforSwizzledProtocolName:"UITextViewDelegate"
+                                   originalSelector:@selector(textViewDidChangeSelection:)
+                                      swizzledClass:[UITextView class]
+                                   swizzledSelector:@selector(ruleValidationTextViewDidChangeSelection:)];
+        [IQSwizzleUtils lookforSwizzledProtocolName:"UITextViewDelegate"
+                                   originalSelector:@selector(textView:shouldInteractWithURL:inRange:)
+                                      swizzledClass:[UITextView class]
+                                   swizzledSelector:@selector(ruleValidationTextView:shouldInteractWithURL:inRange:)];
+        [IQSwizzleUtils lookforSwizzledProtocolName:"UITextViewDelegate"
+                                   originalSelector:@selector(textView:shouldInteractWithTextAttachment:inRange:)
+                                      swizzledClass:[UITextView class]
+                                   swizzledSelector:@selector(ruleValidationTextView:shouldInteractWithTextAttachment:inRange:)];
+        
+    });
+}
 
 #pragma mark @dynamic proerty
 
@@ -82,6 +127,67 @@ static char kAssociatedTextViewRuleManagerKey;
 - (BOOL)validate:(NSString *)str error:(NSError *__autoreleasing *)error
 {
     return [[self getRuleManager] validationInputContent:str error:error];
+}
+
+#pragma mark - swizzled UITextView Method
+
+- (BOOL)ruleValidationTextViewShouldBeginEditing:(UITextView *)textView
+{
+    BOOL editing = [self ruleValidationTextViewShouldBeginEditing:textView];
+    BOOL ruleEditing = [textView textViewShouldBeginEditing:textView];
+    return editing && ruleEditing;
+}
+
+- (BOOL)ruleValidationTextViewShouldEndEditing:(UITextView *)textView
+{
+    BOOL editing = [self ruleValidationTextViewShouldEndEditing:textView];
+    BOOL ruleEditing = [textView textViewShouldEndEditing:textView];
+    return editing && ruleEditing;
+}
+
+- (void)ruleValidationTextViewDidBeginEditing:(UITextView *)textView
+{
+    [self ruleValidationTextViewDidBeginEditing:textView];
+    [textView textViewDidBeginEditing:textView];
+}
+
+- (void)ruleValidationTextViewDidEndEditing:(UITextView *)textView
+{
+    [self ruleValidationTextViewDidEndEditing:textView];
+    [textView textViewDidEndEditing:textView];
+}
+
+- (BOOL)ruleValidationTextView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    BOOL editing = [self ruleValidationTextView:textView shouldChangeTextInRange:range replacementText:text];
+    BOOL ruleEditing = [textView textView:textView shouldChangeTextInRange:range replacementText:text];
+    return editing && ruleEditing;
+}
+
+- (void)ruleValidationTextViewDidChange:(UITextView *)textView
+{
+    [self ruleValidationTextViewDidChange:textView];
+    [textView textViewDidChange:textView];
+}
+
+- (void)ruleValidationTextViewDidChangeSelection:(UITextView *)textView
+{
+    [self ruleValidationTextViewDidChangeSelection:textView];
+    [textView textViewDidChangeSelection:textView];
+}
+
+- (BOOL)ruleValidationTextView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
+{
+    BOOL editing = [self ruleValidationTextView:textView shouldInteractWithURL:URL inRange:characterRange];
+    BOOL ruleEditing = [textView textView:textView shouldInteractWithURL:URL inRange:characterRange];
+    return editing && ruleEditing;
+}
+
+- (BOOL)ruleValidationTextView:(UITextView *)textView shouldInteractWithTextAttachment:(NSTextAttachment *)textAttachment inRange:(NSRange)characterRange
+{
+    BOOL editing = [self ruleValidationTextView:textView shouldInteractWithTextAttachment:textAttachment inRange:characterRange];
+    BOOL ruleEditing = [textView textView:textView shouldInteractWithTextAttachment:textAttachment inRange:characterRange];
+    return editing && ruleEditing;
 }
 
 @end

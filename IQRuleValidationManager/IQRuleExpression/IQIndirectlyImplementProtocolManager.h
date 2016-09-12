@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UIKit/UIkit.h"
 
 @interface IQIndirectlyImplementProtocolManager : NSObject<UITextFieldDelegate, UITextViewDelegate>
 
