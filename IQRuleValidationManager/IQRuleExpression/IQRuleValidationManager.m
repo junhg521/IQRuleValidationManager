@@ -24,7 +24,7 @@
 + (nonnull IQRuleValidationManager *)ruleValidationManagerWithType:(IQRuleValidationType)type
 {
     NSString *className = [[self class] validationClassName];
-    if (className) return nil;
+    if (!className) return nil;
   
     IQRuleValidationManager *manager = [[NSClassFromString(className) alloc] init];
     manager.type = type;
