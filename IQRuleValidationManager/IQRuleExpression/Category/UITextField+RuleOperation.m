@@ -1,6 +1,5 @@
 //
 //  UITextField+RuleOperation.m
-//  WandaBP
 //
 //  Created by Jun on 16/9/12.
 //  Copyright © 2016年 Wanda. All rights reserved.
@@ -37,6 +36,7 @@
     if ([string isEqualToString:@""]) {
         return YES;
     }
+    
     NSString *content = [textField.text stringByReplacingCharactersInRange:range withString:string];
     if (content.length > textField.maxRuleLength && textField.maxRuleLength > 0) {
         return NO;
@@ -45,7 +45,7 @@
         return NO;
     }
     
-    return [self validate:content error:nil];
+    return [self validateWhenChanged:content error:nil];
 }
 
 - (BOOL)textFieldShouldClear:(UITextField *)textField
@@ -55,7 +55,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    return [self validate:textField.text error:nil];
+    return [self validateWhileEndEditing:textField.text error:nil];
 }
 
 @end

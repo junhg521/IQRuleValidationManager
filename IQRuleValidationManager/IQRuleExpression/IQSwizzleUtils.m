@@ -1,6 +1,5 @@
 //
 //  IQSwizzleUtils.m
-//  WandaBP
 //
 //  Created by Jun on 16/9/12.
 //  Copyright © 2016年 Wanda. All rights reserved.
@@ -18,10 +17,15 @@
     Method swizzledMethod = class_getInstanceMethod(swizzledClass, swizzledSelector);
     
     if (!originalMethod) {
+        // 对于originalClass未能实现的协议，将其originalSelector的指针指向IQIndirectlyImplementProtocolManager所对应的方法
         Method indirectlyMethod = class_getInstanceMethod([IQIndirectlyImplementProtocolManager class], originalSelector);
         BOOL addMethod = class_addMethod(originalClass, originalSelector, method_getImplementation(indirectlyMethod), method_getTypeEncoding(indirectlyMethod));
-        originalClass = [IQIndirectlyImplementProtocolManager class];
         if (!addMethod) {
+            return;
+        }
+        
+        originalMethod = class_getInstanceMethod(originalClass, originalSelector);
+        if (!originalMethod) {
             return;
         }
     }
@@ -45,7 +49,8 @@
                             swizzledSelector,
                             method_getImplementation(originalMethod),
                             method_getTypeEncoding(originalMethod));
-    } else {
+    }
+    else {
         method_exchangeImplementations(originalMethod, swizzledMethod);
     }
 }

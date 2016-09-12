@@ -124,9 +124,22 @@ static char kAssociatedTextViewRuleManagerKey;
     return objc_getAssociatedObject(self, &kAssociatedTextViewRuleManagerKey);
 }
 
-- (BOOL)validate:(NSString *)str error:(NSError *__autoreleasing *)error
+- (BOOL)validateWhenChanged:(NSString *)str error:(NSError *__autoreleasing *)error
 {
-    return [[self getRuleManager] validationInputContent:str error:error];
+    __kindof IQRuleValidationManager *manager = [self getRuleManager];
+    if (manager) {
+        return [manager validationInputContentWhenChanged:str error:error];
+    }
+    return YES;
+}
+
+- (BOOL)validateWhileEndEditing:(NSString *)str error:(NSError *__autoreleasing *)error
+{
+    __kindof IQRuleValidationManager *manager = [self getRuleManager];
+    if (manager) {
+        return [manager validationInputContentWhileEndEditing:str error:error];
+    }
+    return YES;
 }
 
 #pragma mark - swizzled UITextView Method

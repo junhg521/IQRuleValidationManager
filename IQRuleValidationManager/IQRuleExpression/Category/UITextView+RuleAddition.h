@@ -41,6 +41,15 @@
  *
  *  @return <#return value description#>
  */
-- (BOOL)validate:(NSString *)str error:(NSError **)error;
+- (BOOL)validateWhenChanged:(NSString *)str error:(NSError **)error;
+/**
+ *  @brief  <#Description#>
+ *
+ *  @param str   <#str description#>
+ *  @param error <#error description#>
+ *
+ *  @return <#return value description#>
+ */
+- (BOOL)validateWhileEndEditing:(NSString *)str error:(NSError *__autoreleasing *)error;
 
 @end

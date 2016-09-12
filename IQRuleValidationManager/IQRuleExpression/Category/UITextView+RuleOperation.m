@@ -1,6 +1,5 @@
 //
 //  UITextView+RuleOperation.m
-//  WandaBP
 //
 //  Created by Jun on 16/9/12.
 //  Copyright © 2016年 Wanda. All rights reserved.
@@ -19,7 +18,7 @@
 - (BOOL)textViewShouldEndEditing:(UITextView *)textView
 {
     return YES;
-//    return [self validate:textView.text error:nil];
+//    return [self validateWhenChanged:textView.text error:nil];
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
@@ -48,7 +47,7 @@
         return NO;
     }
     
-    return [self validate:content error:nil];
+    return [self validateWhenChanged:content error:nil];
 }
 
 - (void)textViewDidChange:(UITextView *)textView

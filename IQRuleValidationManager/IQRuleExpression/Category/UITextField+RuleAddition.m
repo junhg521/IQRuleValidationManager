@@ -124,11 +124,20 @@ static char kAssociatedTextFieldRuleManagerKey;
     return objc_getAssociatedObject(self, &kAssociatedTextFieldRuleManagerKey);
 }
 
-- (BOOL)validate:(NSString *)str error:(NSError *__autoreleasing *)error
+- (BOOL)validateWhenChanged:(NSString *)str error:(NSError *__autoreleasing *)error
 {
     __kindof IQRuleValidationManager *manager = [self getRuleManager];
     if (manager) {
-        return [manager validationInputContent:str error:error];
+        return [manager validationInputContentWhenChanged:str error:error];
+    }
+    return YES;
+}
+
+- (BOOL)validateWhileEndEditing:(NSString *)str error:(NSError *__autoreleasing *)error
+{
+    __kindof IQRuleValidationManager *manager = [self getRuleManager];
+    if (manager) {
+        return [manager validationInputContentWhileEndEditing:str error:error];
     }
     return YES;
 }

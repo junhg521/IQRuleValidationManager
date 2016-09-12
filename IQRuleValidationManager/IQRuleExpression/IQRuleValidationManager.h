@@ -11,9 +11,8 @@
 typedef NS_ENUM(NSUInteger, IQRuleValidationType)
 {
     IQRuleValidationNone = 0,
-    IQRuleValidationLengthConstraint,
-    IQRuleValidationTextFieldDecimal, //定义为最大两位小数点的正数
-    IQRuleValidationTextFieldNumber,  //定义为正整数
+    IQRuleValidationPositive,                       // such as 1, 11,1111,11111
+    IQRuleValidationPositiveWithTwoDecimalPoint, // such as 1.23, 11.23 111.23,1111.23
 };
 
 
@@ -25,11 +24,9 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  @brief  提供对应于IQRuleValidationType所处理的类名,继承的子类都必须提供该方法
  *
- *  @param type 定义的处理类型
- *
  *  @return 类名
  */
-+ (nonnull NSString *)validationClassNameWithType:(IQRuleValidationType)type;
++ (nonnull NSString *)validationClassName;
 /**
  *  @brief  提供对应于IQRuleValidationType所处理的正则表达式,继承的子类都必须提供该方法
  *
@@ -37,16 +34,21 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return 返回正则表达式字符串
  */
-- (nonnull NSString *)regularExpressionWithType:(IQRuleValidationType)type;
+- (nonnull NSString *)regularExpressionWhenChanged;
+/**
+ *  @brief  提供对应于IQRuleValidationType所处理的正则表达式,继承的子类都必须提供该方法
+ *
+ *  @param type 定义的处理类型
+ *
+ *  @return 返回正则表达式字符串
+ */
+- (nonnull NSString *)regularExpressionWhileEndEditing;
 
 @optional
 
 @end
 
 @interface IQRuleValidationManager : NSObject<IQRuleValidationManager>
-
-@property (nonatomic, assign, getter=isRuleValidationEnable) BOOL ruleValidationEnable;
-
 /**
  *  @brief  <#Description#>
  *
@@ -63,7 +65,17 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return <#return value description#>
  */
-- (BOOL)validationInputContent:(NSString *)content error:(NSError * _Nullable __autoreleasing *)error;
+- (BOOL)validationInputContentWhenChanged:(NSString *)content error:(NSError * _Nullable __autoreleasing *)error;
+/**
+ *  @brief  <#Description#>
+ *
+ *  @param content <#content description#>
+ *  @param error   <#error description#>
+ *
+ *  @return <#return value description#>
+ */
+- (BOOL)validationInputContentWhileEndEditing:(NSString *)content error:(NSError * _Nullable __autoreleasing *)error;
+
 @end
 
 NS_ASSUME_NONNULL_END

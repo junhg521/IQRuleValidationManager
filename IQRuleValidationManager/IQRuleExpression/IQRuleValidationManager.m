@@ -23,20 +23,28 @@
 
 + (nonnull IQRuleValidationManager *)ruleValidationManagerWithType:(IQRuleValidationType)type
 {
-    NSString *className = [[self class] validationClassNameWithType:type];
-    if (className) {
-        IQRuleValidationManager *manager = [[NSClassFromString(className) alloc] init];
-        manager.type = type;
-        return manager;
-    }
-    return nil;
+    NSString *className = [[self class] validationClassName];
+    if (className) return nil;
+  
+    IQRuleValidationManager *manager = [[NSClassFromString(className) alloc] init];
+    manager.type = type;
+    return manager;
 }
 
 #pragma mark - public
 
-- (BOOL)validationInputContent:(NSString *)content error:(NSError * _Nullable __autoreleasing *)error
+- (BOOL)validationInputContentWhenChanged:(NSString *)content error:(NSError * _Nullable __autoreleasing *)error
 {
-    NSString *regularExpression = [self regularExpressionWithType:self.type];
+    NSString *regularExpression = [self regularExpressionWhenChanged];
+    if (regularExpression) {
+        return [self validationInputContent:content regularExpression:regularExpression error:error];
+    }
+    return YES;
+}
+
+- (BOOL)validationInputContentWhileEndEditing:(NSString *)content error:(NSError * _Nullable __autoreleasing *)error
+{
+    NSString *regularExpression = [self regularExpressionWhileEndEditing];
     if (regularExpression) {
         return [self validationInputContent:content regularExpression:regularExpression error:error];
     }
@@ -45,36 +53,23 @@
 
 #pragma mark - IQRuleValidationManager
 
-+ (NSString *)validationClassNameWithType:(IQRuleValidationType)type
++ (NSString *)validationClassName
 {
-    NSString *className = nil;
-    switch (type) {
-        case IQRuleValidationLengthConstraint:
-        case IQRuleValidationTextFieldDecimal:
-        case IQRuleValidationTextFieldNumber:
-            className = NSStringFromClass([IQRuleValidationManager class]);
-            break;
-        default:
-            break;
-    }
-    return className;
+    return NSStringFromClass([IQRuleValidationManager class]);
 }
 
-- (NSString *)regularExpressionWithType:(IQRuleValidationType)type
+- (NSString *)regularExpressionWhenChanged
 {
     NSString *regularExpression = nil;
     switch (self.type) {
         case IQRuleValidationNone:
             break;
             
-        case IQRuleValidationLengthConstraint:
-            
-            break;
-        case IQRuleValidationTextFieldDecimal:
+        case IQRuleValidationPositiveWithTwoDecimalPoint:
             regularExpression = @"^(0|[1-9]\\d*)(\\.[0-9]{0,2})?$";
             break;
             
-        case IQRuleValidationTextFieldNumber:
+        case IQRuleValidationPositive:
             regularExpression = @"^[1-9]\\d*$";
             break;
             
@@ -83,6 +78,29 @@
     }
     return regularExpression;
 }
+
+- (NSString *)regularExpressionWhileEndEditing
+{
+    NSString *regularExpression = nil;
+    switch (self.type) {
+        case IQRuleValidationNone:
+            break;
+            
+        case IQRuleValidationPositiveWithTwoDecimalPoint:
+            regularExpression = @"^(0|[1-9]\\d*)(\\.[0-9]{1,2})?$";
+            break;
+            
+        case IQRuleValidationPositive:
+            regularExpression = @"^[1-9]\\d*$";
+            break;
+            
+        default:
+            break;
+    }
+    return regularExpression;
+}
+
+#pragma Mark - private
 
 - (BOOL)validationInputContent:(NSString *)content regularExpression:(NSString *)regularExpression error:(NSError * _Nullable __autoreleasing *)error
 {
@@ -95,13 +113,6 @@
         return YES;
     }
     return NO;
-}
-
-#pragma mark - Property
-
-- (void)setRuleValidationEnable:(BOOL)ruleValidationEnable
-{
-    _ruleValidationEnable = ruleValidationEnable;
 }
 
 @end
