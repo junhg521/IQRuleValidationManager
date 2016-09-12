@@ -9,23 +9,12 @@
 #import <objc/runtime.h>
 
 static char kAssociatedTextViewRuleManagerKey;
-static char kAssociatedTextViewDelegateKey;
 
 @implementation UITextView (RuleAddition)
 @dynamic maxRuleLength;
 @dynamic minRuleLength;
 @dynamic ruleType;
 @dynamic ruleManagerClassName;
-
-#pragma mark - ClassMethod
-
-+ (void)load
-{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        swizzlingInstanceClassMethod([self class], @selector(setValidateTextViewDelegate:), @selector(setDelegate:));
-    });
-}
 
 #pragma mark @dynamic proerty
 
@@ -83,16 +72,6 @@ static char kAssociatedTextViewDelegateKey;
     objc_setAssociatedObject(self, &kAssociatedTextViewRuleManagerKey, manager, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (void)setRuleTextViewDelegate:(id<UITextViewDelegate>)delegate
-{
-    objc_setAssociatedObject(self, &kAssociatedTextViewDelegateKey, delegate, OBJC_ASSOCIATION_ASSIGN);
-}
-
-- (id<UITextViewDelegate>)getRuleTextViewDelegate
-{
-    return objc_getAssociatedObject(self, &kAssociatedTextViewDelegateKey);
-}
-
 #pragma mark - public
 
 - (__kindof IQRuleValidationManager *)getRuleManager
@@ -103,108 +82,6 @@ static char kAssociatedTextViewDelegateKey;
 - (BOOL)validate:(NSString *)str error:(NSError *__autoreleasing *)error
 {
     return [[self getRuleManager] validationInputContent:str error:error];
-}
-
-#pragma mark - UITextViewDelegate
-
-- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
-{
-    id<UITextViewDelegate> textViewDelegate = [textView getRuleTextViewDelegate];
-    if ([textViewDelegate respondsToSelector:@selector(textViewShouldBeginEditing:)]) {
-        return [textViewDelegate textViewShouldBeginEditing:textView];
-    }
-    return YES;
-}
-
-- (BOOL)textViewShouldEndEditing:(UITextView *)textView
-{
-    id<UITextViewDelegate> textViewDelegate = [textView getRuleTextViewDelegate];
-    if ([textViewDelegate respondsToSelector:@selector(textViewShouldEndEditing:)]) {
-        return [textViewDelegate textViewShouldEndEditing:textView];
-    }
-    return [self validate:textView.text error:nil];
-}
-
-- (void)textViewDidBeginEditing:(UITextView *)textView
-{
-    id<UITextViewDelegate> textViewDelegate = [textView getRuleTextViewDelegate];
-    if ([textViewDelegate respondsToSelector:@selector(textViewDidBeginEditing:)]) {
-        [textViewDelegate textViewDidBeginEditing:textView];
-    }
-}
-
-- (void)textViewDidEndEditing:(UITextView *)textView
-{
-    id<UITextViewDelegate> textViewDelegate = [textView getRuleTextViewDelegate];
-    if ([textViewDelegate respondsToSelector:@selector(textViewDidEndEditing:)]) {
-        [textViewDelegate textViewDidEndEditing:textView];
-    }
-}
-
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
-{
-    NSString *content = [textView.text stringByReplacingCharactersInRange:range withString:text];
-    
-    //删除字符肯定是安全的
-    if ([text isEqualToString:@""]) {
-        return YES;
-    }
-    
-    if (content.length > textView.maxRuleLength && textView.maxRuleLength > 0) {
-        return NO;
-    }
-    if (content.length < textView.minRuleLength && textView.minRuleLength > 0) {
-        return NO;
-    }
-    
-    id<UITextViewDelegate> textViewDelegate = [textView getRuleTextViewDelegate];
-    if ([textViewDelegate respondsToSelector:@selector(textView:shouldChangeTextInRange:replacementText:)]) {
-        return [textViewDelegate textView:textView shouldChangeTextInRange:range replacementText:text];
-    }
-
-    return [self validate:content error:nil];
-}
-
-- (void)textViewDidChange:(UITextView *)textView
-{
-    id<UITextViewDelegate> textViewDelegate = [textView getRuleTextViewDelegate];
-    if ([textViewDelegate respondsToSelector:@selector(textViewDidChange:)]) {
-        return [textViewDelegate textViewDidChange:textView];
-    }
-}
-
-- (void)textViewDidChangeSelection:(UITextView *)textView
-{
-    id<UITextViewDelegate> textViewDelegate = [textView getRuleTextViewDelegate];
-    if ([textViewDelegate respondsToSelector:@selector(textViewDidChangeSelection:)]) {
-        return [textViewDelegate textViewDidChangeSelection:textView];
-    }
-}
-
-- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
-{
-    id<UITextViewDelegate> textViewDelegate = [textView getRuleTextViewDelegate];
-    if ([textViewDelegate respondsToSelector:@selector(textView:shouldInteractWithURL:inRange:)]) {
-        return [textViewDelegate textView:textView shouldInteractWithURL:URL inRange:characterRange];
-    }
-    return YES;
-}
-
-- (BOOL)textView:(UITextView *)textView shouldInteractWithTextAttachment:(NSTextAttachment *)textAttachment inRange:(NSRange)characterRange
-{
-    id<UITextViewDelegate> textViewDelegate = [textView getRuleTextViewDelegate];
-    if ([textViewDelegate respondsToSelector:@selector(textViewShouldBeginEditing:)]) {
-        return [textViewDelegate textViewShouldBeginEditing:textView];
-    }
-    return YES;
-}
-
-#pragma mark - swizzled method
-
-- (void)setValidateTextViewDelegate:(id<UITextViewDelegate>)delegate
-{
-    [self setValidateTextViewDelegate:self];
-    [self setRuleTextViewDelegate:delegate];
 }
 
 @end

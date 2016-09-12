@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <objc/runtime.h>
 
 typedef NS_ENUM(NSUInteger, IQRuleValidationType)
 {
@@ -17,19 +16,6 @@ typedef NS_ENUM(NSUInteger, IQRuleValidationType)
     IQRuleValidationTextFieldNumber,  //定义为正整数
 };
 
-static inline void swizzlingInstanceClassMethod(_Nonnull Class validateClass, _Nonnull SEL swizzledSelector, _Nonnull SEL originalSelector)
-{
-    Method originalMethod = class_getInstanceMethod(validateClass, originalSelector);
-    Method swizzledMethod = class_getInstanceMethod(validateClass, swizzledSelector);
-    
-    BOOL didAddMethod = class_addMethod(validateClass, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
-    if (didAddMethod) {
-        class_replaceMethod(validateClass, swizzledSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
-    }
-    else {
-        method_exchangeImplementations(originalMethod, swizzledMethod);
-    }
-}
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -58,6 +44,8 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface IQRuleValidationManager : NSObject<IQRuleValidationManager>
+
+@property (nonatomic, assign, getter=isRuleValidationEnable) BOOL ruleValidationEnable;
 
 /**
  *  @brief  <#Description#>

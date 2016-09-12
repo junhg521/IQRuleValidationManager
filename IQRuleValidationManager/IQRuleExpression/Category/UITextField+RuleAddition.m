@@ -10,23 +10,12 @@
 #import <objc/runtime.h>
 
 static char kAssociatedTextFieldRuleManagerKey;
-static char kAssociatedTextFieldDelegateKey;
 
 @implementation UITextField (RuleAddition)
 @dynamic maxRuleLength;
 @dynamic minRuleLength;
 @dynamic ruleType;
 @dynamic ruleManagerClassName;
-
-#pragma mark - ClassMethod
-
-+ (void)load
-{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        swizzlingInstanceClassMethod([self class], @selector(setValidateTextFieldDelegate:), @selector(setDelegate:));
-    });
-}
 
 #pragma mark - @dynamic proerty
 
@@ -88,16 +77,6 @@ static char kAssociatedTextFieldDelegateKey;
     objc_setAssociatedObject(self, &kAssociatedTextFieldRuleManagerKey, manager, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (void)setRuleTextFieldDelegate:(id<UITextFieldDelegate>)delegate
-{
-    objc_setAssociatedObject(self, &kAssociatedTextFieldDelegateKey, delegate, OBJC_ASSOCIATION_ASSIGN);
-}
-
-- (id<UITextFieldDelegate>)getRuleTextFieldDelegate
-{
-    return objc_getAssociatedObject(self, &kAssociatedTextFieldDelegateKey);
-}
-
 #pragma mark - public
 
 - (__kindof IQRuleValidationManager *)getRuleManager
@@ -105,95 +84,13 @@ static char kAssociatedTextFieldDelegateKey;
     return objc_getAssociatedObject(self, &kAssociatedTextFieldRuleManagerKey);
 }
 
-
 - (BOOL)validate:(NSString *)str error:(NSError *__autoreleasing *)error
 {
-    return [[self getRuleManager] validationInputContent:str error:error];
-}
-
-#pragma mark - UITextFieldDelegate
-
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-    id<UITextFieldDelegate> textFieldDelegate = [self getRuleTextFieldDelegate];
-    if ([textFieldDelegate respondsToSelector:@selector(textFieldShouldBeginEditing:)] ) {
-        return [textFieldDelegate textFieldShouldBeginEditing:textField];
-    }
-    
-    return YES;
-}
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    id<UITextFieldDelegate> textFieldDelegate = [self getRuleTextFieldDelegate];
-    if ([textFieldDelegate respondsToSelector:@selector(textFieldDidBeginEditing:)] ) {
-        [textFieldDelegate textFieldDidBeginEditing:textField];
-    }
-}
-
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
-{
-    id<UITextFieldDelegate> textFieldDelegate = [self getRuleTextFieldDelegate];
-    if ([textFieldDelegate respondsToSelector:@selector(textFieldShouldEndEditing:)] ) {
-        return [textFieldDelegate textFieldShouldEndEditing:textField];
+    __kindof IQRuleValidationManager *manager = [self getRuleManager];
+    if (manager) {
+        return [manager validationInputContent:str error:error];
     }
     return YES;
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    id<UITextFieldDelegate> textFieldDelegate = [self getRuleTextFieldDelegate];
-    if ([textFieldDelegate respondsToSelector:@selector(textFieldDidEndEditing:)] ) {
-        return [textFieldDelegate textFieldDidEndEditing:textField];
-    }
-}
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    //删除字符肯定是安全的
-    if ([string isEqualToString:@""]) {
-        return YES;
-    }
-    NSString *content = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    if (content.length > textField.maxRuleLength && textField.maxRuleLength > 0) {
-        return NO;
-    }
-    if (content.length < textField.minRuleLength && textField.minRuleLength > 0) {
-        return NO;
-    }
-    
-    id<UITextFieldDelegate> textFieldDelegate = [self getRuleTextFieldDelegate];
-    if ([textFieldDelegate respondsToSelector:@selector(textField:shouldChangeCharactersInRange:replacementString:)] ) {
-        return [textFieldDelegate textField:textField shouldChangeCharactersInRange:range replacementString:string];
-    }
-
-    return [self validate:content error:nil];
-}
-
-- (BOOL)textFieldShouldClear:(UITextField *)textField
-{
-    id<UITextFieldDelegate> textFieldDelegate = [self getRuleTextFieldDelegate];
-    if ([textFieldDelegate respondsToSelector:@selector(textFieldShouldClear:)] ) {
-        return [textFieldDelegate textFieldShouldClear:textField];
-    }
-    return YES;
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    id<UITextFieldDelegate> textFieldDelegate = [self getRuleTextFieldDelegate];
-    if ([textFieldDelegate respondsToSelector:@selector(textFieldShouldReturn:)] ) {
-        return [textFieldDelegate textFieldShouldReturn:textField];
-    }
-    return [self validate:textField.text error:nil];
-}
-
-#pragma mark - swizzled method
-
-- (void)setValidateTextFieldDelegate:(id<UITextFieldDelegate>)delegate
-{
-    [self setValidateTextFieldDelegate:self];
-    [self setRuleTextFieldDelegate:delegate];
 }
 
 @end

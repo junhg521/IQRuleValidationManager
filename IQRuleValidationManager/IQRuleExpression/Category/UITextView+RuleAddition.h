@@ -11,7 +11,7 @@
 
 @class IQRuleValidationManager;
 
-@interface UITextView (RuleAddition)<UITextViewDelegate>
+@interface UITextView (RuleAddition)
 
 @property (nonatomic, assign) NSInteger maxRuleLength;
 @property (nonatomic, assign) NSInteger minRuleLength;

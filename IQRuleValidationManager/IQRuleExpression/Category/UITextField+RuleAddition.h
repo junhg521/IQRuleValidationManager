@@ -11,7 +11,7 @@
 
 @class IQRuleValidationManager;
 
-@interface UITextField (RuleAddition)<UITextFieldDelegate>
+@interface UITextField (RuleAddition)
 
 @property (nonatomic, assign) IBInspectable NSInteger maxRuleLength;
 @property (nonatomic, assign) IBInspectable NSInteger minRuleLength;
