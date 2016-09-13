@@ -146,6 +146,7 @@ static char kAssociatedTextViewRuleManagerKey;
 
 - (BOOL)ruleValidationTextViewShouldBeginEditing:(UITextView *)textView
 {
+    NSLog(@"--UITextView ruleValidationTextViewShouldBeginEditing--");
     BOOL editing = [self ruleValidationTextViewShouldBeginEditing:textView];
     BOOL ruleEditing = [textView textViewShouldBeginEditing:textView];
     return editing && ruleEditing;
@@ -153,6 +154,7 @@ static char kAssociatedTextViewRuleManagerKey;
 
 - (BOOL)ruleValidationTextViewShouldEndEditing:(UITextView *)textView
 {
+    NSLog(@"--UITextView ruleValidationTextViewShouldEndEditing:--");
     BOOL editing = [self ruleValidationTextViewShouldEndEditing:textView];
     BOOL ruleEditing = [textView textViewShouldEndEditing:textView];
     return editing && ruleEditing;
@@ -160,18 +162,21 @@ static char kAssociatedTextViewRuleManagerKey;
 
 - (void)ruleValidationTextViewDidBeginEditing:(UITextView *)textView
 {
+    NSLog(@"--UITextView ruleValidationTextViewDidBeginEditing:--");
     [self ruleValidationTextViewDidBeginEditing:textView];
     [textView textViewDidBeginEditing:textView];
 }
 
 - (void)ruleValidationTextViewDidEndEditing:(UITextView *)textView
 {
+    NSLog(@"--UITextView ruleValidationTextViewDidEndEditing:--");
     [self ruleValidationTextViewDidEndEditing:textView];
     [textView textViewDidEndEditing:textView];
 }
 
 - (BOOL)ruleValidationTextView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
+    NSLog(@"--UITextView ruleValidationTextView:shouldChangeTextInRange:replacementText:--");
     BOOL editing = [self ruleValidationTextView:textView shouldChangeTextInRange:range replacementText:text];
     BOOL ruleEditing = [textView textView:textView shouldChangeTextInRange:range replacementText:text];
     return editing && ruleEditing;
@@ -179,18 +184,21 @@ static char kAssociatedTextViewRuleManagerKey;
 
 - (void)ruleValidationTextViewDidChange:(UITextView *)textView
 {
+    NSLog(@"--UITextView ruleValidationTextViewDidChange--");
     [self ruleValidationTextViewDidChange:textView];
     [textView textViewDidChange:textView];
 }
 
 - (void)ruleValidationTextViewDidChangeSelection:(UITextView *)textView
 {
+    NSLog(@"--UITextView ruleValidationTextViewDidChangeSelection--");
     [self ruleValidationTextViewDidChangeSelection:textView];
     [textView textViewDidChangeSelection:textView];
 }
 
 - (BOOL)ruleValidationTextView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
 {
+    NSLog(@"--UITextView ruleValidationTextView:shouldInteractWithURL:inRange:--");
     BOOL editing = [self ruleValidationTextView:textView shouldInteractWithURL:URL inRange:characterRange];
     BOOL ruleEditing = [textView textView:textView shouldInteractWithURL:URL inRange:characterRange];
     return editing && ruleEditing;
@@ -198,6 +206,7 @@ static char kAssociatedTextViewRuleManagerKey;
 
 - (BOOL)ruleValidationTextView:(UITextView *)textView shouldInteractWithTextAttachment:(NSTextAttachment *)textAttachment inRange:(NSRange)characterRange
 {
+    NSLog(@"--UITextView ruleValidationTextView:shouldInteractWithTextAttachment:inRange--");
     BOOL editing = [self ruleValidationTextView:textView shouldInteractWithTextAttachment:textAttachment inRange:characterRange];
     BOOL ruleEditing = [textView textView:textView shouldInteractWithTextAttachment:textAttachment inRange:characterRange];
     return editing && ruleEditing;
