@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "IQRuleExpression.h"
 
 @interface ViewController ()<UITextFieldDelegate>
 
@@ -18,12 +19,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    self.nameTextField.ruleType = IQRuleValidationTextFieldDecimal;
+    self.nameTextField.ruleType = IQRuleValidationPositiveWithTwoDecimalPoint;
     self.nameTextField.keyboardType = UIKeyboardTypeDecimalPad;
     self.nameTextField.delegate = self;
     
-    self.passwordTextField.ruleType = IQRuleValidationTextFieldNumber;
-    self.passwordTextField.keyboardType = UIKeyboardTypeNumberPad;
+    self.passwordTextField.ruleType = IQRuleValidationPositive;
+    self.passwordTextField.keyboardType = IQRuleValidationPositive;
     self.passwordTextField.delegate = self;
 }
 

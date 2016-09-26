@@ -6,6 +6,7 @@
 //
 
 #import "IQIndirectlyImplementProtocolManager.h"
+#import "IQRuleMacro.h"
 
 @implementation IQIndirectlyImplementProtocolManager
 
@@ -13,41 +14,41 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    NSLog(@"--IQIndirectlyImplementProtocolManager textFieldShouldBeginEditing--");
+    DLog(@"--textFieldShouldBeginEditing--")
     return YES;
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    NSLog(@"--IQIndirectlyImplementProtocolManager textFieldDidBeginEditing--");
+    DLog(@"--textFieldDidBeginEditing--")
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
-    NSLog(@"--IQIndirectlyImplementProtocolManager textFieldShouldEndEditing--");
+    DLog(@"--textFieldShouldEndEditing--")
     return YES;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    NSLog(@"--IQIndirectlyImplementProtocolManager textFieldDidEndEditing--");
+    DLog(@"--textFieldDidEndEditing--")
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    NSLog(@"--IQIndirectlyImplementProtocolManager textField:shouldChangeCharactersInRange:replacementString--");
+    DLog(@"--textField:shouldChangeCharactersInRange:replacementString--")
     return YES;
 }
 
 - (BOOL)textFieldShouldClear:(UITextField *)textField
 {
-    NSLog(@"--IQIndirectlyImplementProtocolManager textFieldShouldClear--");
+    DLog(@"--textFieldShouldClear--")
     return YES;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    NSLog(@"--IQIndirectlyImplementProtocolManager textFieldShouldReturn--");
+    DLog(@"--textFieldShouldReturn--")
     return YES;
 }
 
@@ -55,51 +56,51 @@
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
-    NSLog(@"--IQIndirectlyImplementProtocolManager textFieldShouldBeginEditing--");
+    DLog(@"--textFieldShouldBeginEditing--")
     return YES;
 }
 
 - (BOOL)textViewShouldEndEditing:(UITextView *)textView
 {
-    NSLog(@"--IQIndirectlyImplementProtocolManager textFieldShouldBeginEditing--");
+    DLog(@"--textFieldShouldBeginEditing--")
     return YES;
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
-    NSLog(@"--IQIndirectlyImplementProtocolManager textViewDidBeginEditing--");
+    DLog(@"--textViewDidBeginEditing--")
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
-    NSLog(@"---IQIndirectlyImplementProtocolManager textViewDidEndEditing--");
+    DLog(@"---textViewDidEndEditing--")
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
-    NSLog(@"--IQIndirectlyImplementProtocolManager textView:shouldChangeTextInRange:replacementText:--");
+    DLog(@"--textView:shouldChangeTextInRange:replacementText:--")
     return YES;
 }
 
 - (void)textViewDidChange:(UITextView *)textView
 {
-    NSLog(@"--IQIndirectlyImplementProtocolManager textViewDidChange--");
+    DLog(@"--textViewDidChange--")
 }
 
 - (void)textViewDidChangeSelection:(UITextView *)textView
 {
-    NSLog(@"--IQIndirectlyImplementProtocolManager textViewDidChangeSelection--");
+    DLog(@"--textViewDidChangeSelection--")
 }
 
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
 {
-    NSLog(@"--IQIndirectlyImplementProtocolManager textView:shouldInteractWithURL:--");
+    DLog(@"--textView:shouldInteractWithURL:--")
     return YES;
 }
 
 - (BOOL)textView:(UITextView *)textView shouldInteractWithTextAttachment:(NSTextAttachment *)textAttachment inRange:(NSRange)characterRange
 {
-    NSLog(@"--IQIndirectlyImplementProtocolManager textView:shouldInteractWithTextAttachment:inRange:--");
+    DLog(@"--textView:shouldInteractWithTextAttachment:inRange:--")
     return YES;
 }
 

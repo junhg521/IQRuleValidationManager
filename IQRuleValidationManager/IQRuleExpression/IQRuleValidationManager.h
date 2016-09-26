@@ -17,7 +17,6 @@ typedef NS_ENUM(NSUInteger, IQRuleValidationType)
     IQRuleValidationQQ,
 };
 
-
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol IQRuleValidationManager <NSObject>
@@ -52,29 +51,29 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface IQRuleValidationManager : NSObject<IQRuleValidationManager>
 /**
- *  @brief  <#Description#>
+ *  @brief  实例化IQRuleValidationManager
  *
- *  @param type <#type description#>
+ *  @param type 参考IQRuleValidationType定义
  *
- *  @return <#return value description#>
+ *  @return IQRuleValidationManager类及子类
  */
 + (nonnull __kindof IQRuleValidationManager *)ruleValidationManagerWithType:(IQRuleValidationType)type;
 /**
- *  @brief  <#Description#>
+ *  @brief  对用户正在输入的内容进行正则表达式判断
  *
- *  @param content <#content description#>
- *  @param error   <#error description#>
+ *  @param content UITextField或UITextView的输入内容
+ *  @param error   正则表达式判断错误
  *
- *  @return <#return value description#>
+ *  @return 返回YES表示成功，NO表示失败
  */
 - (BOOL)validationInputContentWhenChanged:(NSString *)content error:(NSError * _Nullable __autoreleasing *)error;
 /**
- *  @brief  <#Description#>
+ *  @brief  对用户输入完的内容进行正则表达式判断
  *
- *  @param content <#content description#>
- *  @param error   <#error description#>
+ *  @param content UITextField或UITextView的输入内容
+ *  @param error   正则表达式判断错误
  *
- *  @return <#return value description#>
+ *  @return 返回YES表示成功，NO表示失败
  */
 - (BOOL)validationInputContentWhileEndEditing:(NSString *)content error:(NSError * _Nullable __autoreleasing *)error;
 

@@ -11,12 +11,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface IQSwizzleUtils : NSObject
 /**
- *  @brief  <#Description#>
+ *  @brief  替换所有实现了protocolName协议的方法
  *
- *  @param protocolName     <#protocolName description#>
- *  @param originalSelector <#originalSelector description#>
- *  @param swizzledClass    <#swizzledClass description#>
- *  @param swizzledSelector <#swizzledSelector description#>
+ *  @param protocolName     协议名
+ *  @param originalSelector 协议的 old selector
+ *  @param swizzledClass    替换的类
+ *  @param swizzledSelector 替换的selector
  */
 + (void)lookforSwizzledProtocolName:( const char * _Nonnull )protocolName originalSelector:(_Nonnull SEL)originalSelector  swizzledClass:(_Nonnull Class)swizzledClass swizzledSelector:(_Nonnull SEL) swizzledSelector;
 

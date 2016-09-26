@@ -28,28 +28,10 @@
  */
 @property (nonatomic, strong) IBInspectable NSString *ruleManagerClassName;
 /**
- *  @brief  <#Description#>
- *
- *  @return <#return value description#>
+ 获取处理UITextField的规则类
+ 
+ @return IQRuleValidationManager及自定义的子类
  */
 - (__kindof IQRuleValidationManager *)getRuleManager;
-/**
- *  @brief  <#Description#>
- *
- *  @param str   <#str description#>
- *  @param error <#error description#>
- *
- *  @return <#return value description#>
- */
-- (BOOL)validateWhenChanged:(NSString *)str error:(NSError **)error;
-/**
- *  @brief  <#Description#>
- *
- *  @param str   <#str description#>
- *  @param error <#error description#>
- *
- *  @return <#return value description#>
- */
-- (BOOL)validateWhileEndEditing:(NSString *)str error:(NSError *__autoreleasing *)error;
 
 @end

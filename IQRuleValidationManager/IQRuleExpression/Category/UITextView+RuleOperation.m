@@ -17,8 +17,15 @@
 
 - (BOOL)textViewShouldEndEditing:(UITextView *)textView
 {
+    __kindof IQRuleValidationManager *manager = [self getRuleManager];
+    if (textView.text.length < textView.minRuleLength && textView.minRuleLength > 0) {
+        return NO;
+    }
+    if (manager) {
+        NSError *error = nil;
+        return [manager validationInputContentWhileEndEditing:textView.text error:&error];
+    }
     return YES;
-//    return [self validateWhenChanged:textView.text error:nil];
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
@@ -43,11 +50,14 @@
     if (content.length > textView.maxRuleLength && textView.maxRuleLength > 0) {
         return NO;
     }
-    if (content.length < textView.minRuleLength && textView.minRuleLength > 0) {
-        return NO;
-    }
     
-    return [self validateWhenChanged:content error:nil];
+    
+    __kindof IQRuleValidationManager *manager = [self getRuleManager];
+    if (manager) {
+        NSError *error = nil;
+        return [manager validationInputContentWhenChanged:content error:&error];
+    }
+    return YES;
 }
 
 - (void)textViewDidChange:(UITextView *)textView

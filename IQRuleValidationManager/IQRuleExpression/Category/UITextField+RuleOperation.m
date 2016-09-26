@@ -41,11 +41,13 @@
     if (content.length > textField.maxRuleLength && textField.maxRuleLength > 0) {
         return NO;
     }
-    if (content.length < textField.minRuleLength && textField.minRuleLength > 0) {
-        return NO;
-    }
     
-    return [self validateWhenChanged:content error:nil];
+    __kindof IQRuleValidationManager *manager = [self getRuleManager];
+    if (manager) {
+        NSError *error = nil;
+        return [manager validationInputContentWhenChanged:content error:&error];
+    }
+    return YES;
 }
 
 - (BOOL)textFieldShouldClear:(UITextField *)textField
@@ -55,7 +57,17 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    return [self validateWhileEndEditing:textField.text error:nil];
+    __kindof IQRuleValidationManager *manager = [self getRuleManager];
+    
+    if (textField.text.length < textField.minRuleLength && textField.minRuleLength > 0) {
+        return NO;
+    }
+    
+    if (manager) {
+        NSError *error = nil;
+        return [manager validationInputContentWhileEndEditing:textField.text error:&error];
+    }
+    return YES;
 }
 
 @end

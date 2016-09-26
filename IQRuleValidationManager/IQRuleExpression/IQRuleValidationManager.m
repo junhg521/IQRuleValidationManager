@@ -7,8 +7,6 @@
 //
 
 #import "IQRuleValidationManager.h"
-#import "IQIndirectlyImplementProtocolManager.h"
-#import "UITextField+RuleOperation.h"
 
 #import <objc/runtime.h>
 

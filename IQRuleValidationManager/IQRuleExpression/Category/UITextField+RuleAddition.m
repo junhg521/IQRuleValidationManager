@@ -8,10 +8,9 @@
 #import "UITextField+RuleAddition.h"
 #import "IQRuleValidationManager.h"
 #import "IQSwizzleUtils.h"
+#import "IQRuleMacro.h"
 #import "UITextField+RuleOperation.h"
 #import <objc/runtime.h>
-
-static char kAssociatedTextFieldRuleManagerKey;
 
 @implementation UITextField (RuleAddition)
 @dynamic maxRuleLength;
@@ -61,7 +60,9 @@ static char kAssociatedTextFieldRuleManagerKey;
 
 - (void)setMaxRuleLength:(NSInteger)maxRuleLength
 {
+    [self willChangeValueForKey:@"maxRuleLength"];
     objc_setAssociatedObject(self, @selector(maxRuleLength), @(maxRuleLength), OBJC_ASSOCIATION_ASSIGN);
+    [self didChangeValueForKey:@"maxRuleLength"];
 }
 
 - (NSInteger)maxRuleLength
@@ -73,7 +74,9 @@ static char kAssociatedTextFieldRuleManagerKey;
 
 - (void)setMinRuleLength:(NSInteger)minRuleLength
 {
+    [self willChangeValueForKey:@"minRuleLength"];
     objc_setAssociatedObject(self, @selector(minRuleLength), @(minRuleLength), OBJC_ASSOCIATION_ASSIGN);
+    [self didChangeValueForKey:@"minRuleLength"];
 }
 
 - (NSInteger)minRuleLength
@@ -85,11 +88,9 @@ static char kAssociatedTextFieldRuleManagerKey;
 
 - (void)setRuleType:(IQRuleValidationType)ruleType
 {
+    [self willChangeValueForKey:@"ruleType"];
     objc_setAssociatedObject(self, @selector(ruleType), @(ruleType), OBJC_ASSOCIATION_ASSIGN);
-    __kindof IQRuleValidationManager *manager = [IQRuleValidationManager ruleValidationManagerWithType:ruleType];
-    if (manager) {
-        [self setRuleManager:manager];
-    }
+    [self didChangeValueForKey:@"ruleType"];
 }
 
 - (IQRuleValidationType)ruleType
@@ -99,10 +100,9 @@ static char kAssociatedTextFieldRuleManagerKey;
 
 - (void)setRuleManagerClassName:(NSString *)ruleManagerClassName
 {
+    [self willChangeValueForKey:@"ruleManagerClassName"];
     objc_setAssociatedObject(self, @selector(ruleManagerClassName), ruleManagerClassName, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    
-    __kindof IQRuleValidationManager *manager = [[NSClassFromString(ruleManagerClassName) alloc] init];
-    [self setRuleManager:manager];
+    [self didChangeValueForKey:@"ruleManagerClassName"];
 }
 
 - (NSString *)ruleManagerClassName
@@ -110,43 +110,26 @@ static char kAssociatedTextFieldRuleManagerKey;
     return objc_getAssociatedObject(self, @selector(ruleManagerClassName));
 }
 
-#pragma mark - private
-
-- (void)setRuleManager:(__kindof IQRuleValidationManager *)manager
-{
-    objc_setAssociatedObject(self, &kAssociatedTextFieldRuleManagerKey, manager, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
 #pragma mark - public
 
 - (__kindof IQRuleValidationManager *)getRuleManager
 {
-    return objc_getAssociatedObject(self, &kAssociatedTextFieldRuleManagerKey);
-}
-
-- (BOOL)validateWhenChanged:(NSString *)str error:(NSError *__autoreleasing *)error
-{
-    __kindof IQRuleValidationManager *manager = [self getRuleManager];
-    if (manager) {
-        return [manager validationInputContentWhenChanged:str error:error];
+    NSString *className = [self ruleManagerClassName];
+    if ([className length] && [[className class] isKindOfClass:[IQRuleValidationManager class]]) {
+        IQRuleValidationManager *manager = [[[className class] alloc] init];
+        return manager;
     }
-    return YES;
-}
-
-- (BOOL)validateWhileEndEditing:(NSString *)str error:(NSError *__autoreleasing *)error
-{
-    __kindof IQRuleValidationManager *manager = [self getRuleManager];
-    if (manager) {
-        return [manager validationInputContentWhileEndEditing:str error:error];
+    else {
+        IQRuleValidationManager *manager = [IQRuleValidationManager ruleValidationManagerWithType:[self ruleType]];
+        return manager;
     }
-    return YES;
 }
 
 #pragma mark - swizzled UITextField method
 
 - (BOOL)ruleValidationTextFieldShouldBeginEditing:(UITextField *)textField
 {
-    NSLog(@"--UITextField ruleValidationTextFieldShouldBeginEditing--");
+    DLog(@"--ruleValidationTextFieldShouldBeginEditing--")
     BOOL editing =  [self ruleValidationTextFieldShouldBeginEditing:textField];
     BOOL ruleEditing = [textField textFieldShouldBeginEditing:textField];
     return editing && ruleEditing;
@@ -154,14 +137,14 @@ static char kAssociatedTextFieldRuleManagerKey;
 
 - (void)ruleValidationTextFieldDidBeginEditing:(UITextField *)textField
 {
-    NSLog(@"--UITextField ruleValidationTextFieldDidBeginEditing--");
+    DLog(@"--ruleValidationTextFieldDidBeginEditing--")
     [self ruleValidationTextFieldDidBeginEditing:textField];
     [textField textFieldDidBeginEditing:textField];
 }
 
 - (BOOL)ruleValidationTextFieldShouldEndEditing:(UITextField *)textField
 {
-    NSLog(@"--UITextField ruleValidationTextFieldShouldEndEditing--");
+    DLog(@"--ruleValidationTextFieldShouldEndEditing--")
     BOOL editing = [self ruleValidationTextFieldShouldEndEditing:textField];
     BOOL ruleEditing = [textField textFieldShouldEndEditing:textField];
     return editing && ruleEditing;
@@ -169,14 +152,14 @@ static char kAssociatedTextFieldRuleManagerKey;
 
 - (void)ruleValidationTextFieldDidEndEditing:(UITextField *)textField
 {
-    NSLog(@"--UITextField ruleValidationTextFieldDidEndEditing--");
+    DLog(@"--ruleValidationTextFieldDidEndEditing--")
     [self ruleValidationTextFieldDidEndEditing:textField];
     [textField textFieldDidEndEditing:textField];
 }
 
 - (BOOL)ruleValidationTextField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    NSLog(@"--UITextField ruleValidationTextField:shouldChangeCharactersInRange:replacementString--");
+    NSLog(@"--ruleValidationTextField:shouldChangeCharactersInRange:replacementString--");
     BOOL editing = [self ruleValidationTextField:textField shouldChangeCharactersInRange:range replacementString:string];
     BOOL ruleEditing = [textField textField:textField shouldChangeCharactersInRange:range replacementString:string];
     return editing && ruleEditing;
@@ -184,7 +167,7 @@ static char kAssociatedTextFieldRuleManagerKey;
 
 - (BOOL)ruleValidationTextFieldShouldClear:(UITextField *)textField
 {
-    NSLog(@"--UITextField ruleValidationTextFieldShouldClear--");
+    DLog(@"--ruleValidationTextFieldShouldClear--")
     BOOL editing = [self ruleValidationTextFieldShouldClear:textField];
     BOOL ruleEditing = [textField textFieldShouldClear:textField];
     return editing && ruleEditing;
@@ -192,7 +175,7 @@ static char kAssociatedTextFieldRuleManagerKey;
 
 - (BOOL)ruleValidationTextFieldShouldReturn:(UITextField *)textField
 {
-    NSLog(@"--UITextField ruleValidationTextFieldShouldReturn--");
+    DLog(@"--ruleValidationTextFieldShouldReturn--")
     BOOL editing = [self ruleValidationTextFieldShouldReturn:textField];
     BOOL ruleEditing = [textField textFieldShouldReturn:textField];
     return editing && ruleEditing;

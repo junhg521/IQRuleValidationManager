@@ -10,8 +10,7 @@
 #import "IQSwizzleUtils.h"
 #import "UITextView+RuleOperation.h"
 #import <objc/runtime.h>
-
-static char kAssociatedTextViewRuleManagerKey;
+#import "IQRuleMacro.h"
 
 @implementation UITextView (RuleAddition)
 @dynamic maxRuleLength;
@@ -65,7 +64,9 @@ static char kAssociatedTextViewRuleManagerKey;
 
 - (void)setMaxRuleLength:(NSInteger)maxRuleLength
 {
+    [self willChangeValueForKey:@"maxRuleLength"];
     objc_setAssociatedObject(self, @selector(maxRuleLength), @(maxRuleLength), OBJC_ASSOCIATION_ASSIGN);
+    [self didChangeValueForKey:@"maxRuleLength"];
 }
 
 - (NSInteger)maxRuleLength
@@ -75,7 +76,9 @@ static char kAssociatedTextViewRuleManagerKey;
 
 - (void)setMinRuleLength:(NSInteger)minRuleLength
 {
+    [self willChangeValueForKey:@"minRuleLength"];
     objc_setAssociatedObject(self, @selector(minRuleLength), @(minRuleLength), OBJC_ASSOCIATION_ASSIGN);
+    [self didChangeValueForKey:@"minRuleLength"];
 }
 
 - (NSInteger)minRuleLength
@@ -85,11 +88,9 @@ static char kAssociatedTextViewRuleManagerKey;
 
 - (void)setRuleType:(IQRuleValidationType)ruleType
 {
+    [self willChangeValueForKey:@"ruleType"];
     objc_setAssociatedObject(self, @selector(ruleType), @(ruleType), OBJC_ASSOCIATION_ASSIGN);
-    __kindof IQRuleValidationManager *manager = [IQRuleValidationManager ruleValidationManagerWithType:ruleType];
-    if (manager) {
-        [self setRuleManager:manager];
-    }
+    [self didChangeValueForKey:@"ruleType"];
 }
 
 - (IQRuleValidationType)ruleType
@@ -99,10 +100,9 @@ static char kAssociatedTextViewRuleManagerKey;
 
 - (void)setRuleManagerClassName:(NSString *)ruleManagerClassName
 {
+    [self willChangeValueForKey:@"ruleManagerClassName"];
     objc_setAssociatedObject(self, @selector(ruleManagerClassName), ruleManagerClassName, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    
-    __kindof IQRuleValidationManager *manager = [[NSClassFromString(ruleManagerClassName) alloc] init];
-    [self setRuleManager:manager];
+    [self didChangeValueForKey:@"ruleManagerClassName"];
 }
 
 - (NSString *)ruleManagerClassName
@@ -110,43 +110,26 @@ static char kAssociatedTextViewRuleManagerKey;
     return objc_getAssociatedObject(self, @selector(ruleManagerClassName));
 }
 
-#pragma mark - private
-
-- (void)setRuleManager:(__kindof IQRuleValidationManager *)manager
-{
-    objc_setAssociatedObject(self, &kAssociatedTextViewRuleManagerKey, manager, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
 #pragma mark - public
 
 - (__kindof IQRuleValidationManager *)getRuleManager
 {
-    return objc_getAssociatedObject(self, &kAssociatedTextViewRuleManagerKey);
-}
-
-- (BOOL)validateWhenChanged:(NSString *)str error:(NSError *__autoreleasing *)error
-{
-    __kindof IQRuleValidationManager *manager = [self getRuleManager];
-    if (manager) {
-        return [manager validationInputContentWhenChanged:str error:error];
+    NSString *className = [self ruleManagerClassName];
+    if ([className length] && [[className class] isKindOfClass:[IQRuleValidationManager class]]) {
+        IQRuleValidationManager *manager = [[[className class] alloc] init];
+        return manager;
     }
-    return YES;
-}
-
-- (BOOL)validateWhileEndEditing:(NSString *)str error:(NSError *__autoreleasing *)error
-{
-    __kindof IQRuleValidationManager *manager = [self getRuleManager];
-    if (manager) {
-        return [manager validationInputContentWhileEndEditing:str error:error];
+    else {
+        IQRuleValidationManager *manager = [IQRuleValidationManager ruleValidationManagerWithType:[self ruleType]];
+        return manager;
     }
-    return YES;
 }
 
 #pragma mark - swizzled UITextView Method
 
 - (BOOL)ruleValidationTextViewShouldBeginEditing:(UITextView *)textView
 {
-    NSLog(@"--UITextView ruleValidationTextViewShouldBeginEditing--");
+    DLog(@"--ruleValidationTextViewShouldBeginEditing--")
     BOOL editing = [self ruleValidationTextViewShouldBeginEditing:textView];
     BOOL ruleEditing = [textView textViewShouldBeginEditing:textView];
     return editing && ruleEditing;
@@ -154,7 +137,7 @@ static char kAssociatedTextViewRuleManagerKey;
 
 - (BOOL)ruleValidationTextViewShouldEndEditing:(UITextView *)textView
 {
-    NSLog(@"--UITextView ruleValidationTextViewShouldEndEditing:--");
+    DLog(@"--ruleValidationTextViewShouldEndEditing:--")
     BOOL editing = [self ruleValidationTextViewShouldEndEditing:textView];
     BOOL ruleEditing = [textView textViewShouldEndEditing:textView];
     return editing && ruleEditing;
@@ -162,21 +145,21 @@ static char kAssociatedTextViewRuleManagerKey;
 
 - (void)ruleValidationTextViewDidBeginEditing:(UITextView *)textView
 {
-    NSLog(@"--UITextView ruleValidationTextViewDidBeginEditing:--");
+    DLog(@"--ruleValidationTextViewDidBeginEditing:--")
     [self ruleValidationTextViewDidBeginEditing:textView];
     [textView textViewDidBeginEditing:textView];
 }
 
 - (void)ruleValidationTextViewDidEndEditing:(UITextView *)textView
 {
-    NSLog(@"--UITextView ruleValidationTextViewDidEndEditing:--");
+    DLog(@"--ruleValidationTextViewDidEndEditing:--")
     [self ruleValidationTextViewDidEndEditing:textView];
     [textView textViewDidEndEditing:textView];
 }
 
 - (BOOL)ruleValidationTextView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
-    NSLog(@"--UITextView ruleValidationTextView:shouldChangeTextInRange:replacementText:--");
+    DLog(@"--ruleValidationTextView:shouldChangeTextInRange:replacementText:--")
     BOOL editing = [self ruleValidationTextView:textView shouldChangeTextInRange:range replacementText:text];
     BOOL ruleEditing = [textView textView:textView shouldChangeTextInRange:range replacementText:text];
     return editing && ruleEditing;
@@ -184,21 +167,21 @@ static char kAssociatedTextViewRuleManagerKey;
 
 - (void)ruleValidationTextViewDidChange:(UITextView *)textView
 {
-    NSLog(@"--UITextView ruleValidationTextViewDidChange--");
+    DLog(@"--ruleValidationTextViewDidChange--")
     [self ruleValidationTextViewDidChange:textView];
     [textView textViewDidChange:textView];
 }
 
 - (void)ruleValidationTextViewDidChangeSelection:(UITextView *)textView
 {
-    NSLog(@"--UITextView ruleValidationTextViewDidChangeSelection--");
+    DLog(@"--ruleValidationTextViewDidChangeSelection--")
     [self ruleValidationTextViewDidChangeSelection:textView];
     [textView textViewDidChangeSelection:textView];
 }
 
 - (BOOL)ruleValidationTextView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
 {
-    NSLog(@"--UITextView ruleValidationTextView:shouldInteractWithURL:inRange:--");
+    DLog(@"--ruleValidationTextView:shouldInteractWithURL:inRange:--")
     BOOL editing = [self ruleValidationTextView:textView shouldInteractWithURL:URL inRange:characterRange];
     BOOL ruleEditing = [textView textView:textView shouldInteractWithURL:URL inRange:characterRange];
     return editing && ruleEditing;
@@ -206,7 +189,7 @@ static char kAssociatedTextViewRuleManagerKey;
 
 - (BOOL)ruleValidationTextView:(UITextView *)textView shouldInteractWithTextAttachment:(NSTextAttachment *)textAttachment inRange:(NSRange)characterRange
 {
-    NSLog(@"--UITextView ruleValidationTextView:shouldInteractWithTextAttachment:inRange--");
+    DLog(@"--ruleValidationTextView:shouldInteractWithTextAttachment:inRange--")
     BOOL editing = [self ruleValidationTextView:textView shouldInteractWithTextAttachment:textAttachment inRange:characterRange];
     BOOL ruleEditing = [textView textView:textView shouldInteractWithTextAttachment:textAttachment inRange:characterRange];
     return editing && ruleEditing;
