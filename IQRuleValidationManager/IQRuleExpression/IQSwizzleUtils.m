@@ -64,7 +64,7 @@
     for (NSInteger i=0; i<classesCount; i++) {
         @autoreleasepool {
             Class conformClass = classes[i];
-            if (![NSStringFromClass(conformClass) hasPrefix:@"BP"] || [NSStringFromClass(conformClass) isEqualToString:@"IQIndirectlyImplementProtocolManager"]) {
+            if ([NSStringFromClass(conformClass) isEqualToString:@"IQIndirectlyImplementProtocolManager"]) {
                 continue;
             }
             while (conformClass != Nil) {

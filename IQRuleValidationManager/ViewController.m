@@ -24,7 +24,7 @@
     self.nameTextField.delegate = self;
     
     self.passwordTextField.ruleType = IQRuleValidationPositive;
-    self.passwordTextField.keyboardType = IQRuleValidationPositive;
+    self.passwordTextField.keyboardType = UIKeyboardTypeNumberPad;
     self.passwordTextField.delegate = self;
 }
 
