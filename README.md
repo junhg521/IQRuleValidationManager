@@ -1,10 +1,6 @@
 #IQRuleValidationManager使用说明
 > 该文档主要描述IQRuleValidationManager在开发中使用说明
 
-| 撰稿人  |  版本 |            修改描述                 |    日期   |
-|--------|:----:|:----------------------------------:|:--------:|
-|  吴俊  |  1.0  | 描述IQRuleValidationManager使用方法  |2016-09-28|
-
 ## UITextField、UITextView常规验证
 验证UITextField、UITextView的输入时，需要在实现的方法中实现UItextView的delegate方法
 
