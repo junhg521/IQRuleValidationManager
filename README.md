@@ -48,7 +48,6 @@
 @interface classA<UITextFieldDelegate>
 @property(strong) UITextField *textField;
 
-self.textField.delegate = self;
 self.textField.ruleType = IQRuleValidationType中的一种类型
 或使用
 self.textField.ruleManagerClassName = @"自定义的规则名字";
@@ -111,4 +110,4 @@ typedef NS_ENUM(NSUInteger, IQRuleValidationType)
 
 
 ## IQRuleValidationManager缺陷
-暂代更新
+目前所用到的规则较少，暂代更新
