@@ -9,7 +9,6 @@
 #import "IQRuleValidationManager.h"
 #import "IQSwizzleUtils.h"
 #import "IQRuleMacro.h"
-#import "UITextField+RuleOperation.h"
 #import <objc/runtime.h>
 
 @implementation UITextField (RuleAddition)
@@ -27,33 +26,38 @@
         [IQSwizzleUtils lookforSwizzledProtocolName:"UITextFieldDelegate"
                                    originalSelector:@selector(textFieldShouldBeginEditing:)
                                       swizzledClass:[UITextField class]
-                                   swizzledSelector:@selector(ruleValidationTextFieldShouldBeginEditing:)];
+                                   swizzledSelector:@selector(validationTextFieldShouldBeginEditing:)];
         [IQSwizzleUtils lookforSwizzledProtocolName:"UITextFieldDelegate"
                                    originalSelector:@selector(textFieldDidBeginEditing:)
                                       swizzledClass:[UITextField class]
-                                   swizzledSelector:@selector(ruleValidationTextFieldDidBeginEditing:)];
+                                   swizzledSelector:@selector(validationTextFieldDidBeginEditing:)];
         [IQSwizzleUtils lookforSwizzledProtocolName:"UITextFieldDelegate"
                                    originalSelector:@selector(textFieldShouldEndEditing:)
                                       swizzledClass:[UITextField class]
-                                   swizzledSelector:@selector(ruleValidationTextFieldShouldEndEditing:)];
+                                   swizzledSelector:@selector(validationTextFieldShouldEndEditing:)];
         [IQSwizzleUtils lookforSwizzledProtocolName:"UITextFieldDelegate"
                                    originalSelector:@selector(textFieldDidEndEditing:)
                                       swizzledClass:[UITextField class]
-                                   swizzledSelector:@selector(ruleValidationTextFieldDidEndEditing:)];
+                                   swizzledSelector:@selector(validationTextFieldDidEndEditing:)];
         [IQSwizzleUtils lookforSwizzledProtocolName:"UITextFieldDelegate"
                                    originalSelector:@selector(textField:shouldChangeCharactersInRange:replacementString:)
                                       swizzledClass:[UITextField class]
-                                   swizzledSelector:@selector(ruleValidationTextField:shouldChangeCharactersInRange:replacementString:)];
+                                   swizzledSelector:@selector(validationTextField:shouldChangeCharactersInRange:replacementString:)];
         [IQSwizzleUtils lookforSwizzledProtocolName:"UITextFieldDelegate"
                                    originalSelector:@selector(textFieldShouldClear:)
-                                      swizzledClass:[UITextView class]
-                                   swizzledSelector:@selector(ruleValidationTextFieldShouldClear:)];
+                                      swizzledClass:[UITextField class]
+                                   swizzledSelector:@selector(validationTextFieldShouldClear:)];
         [IQSwizzleUtils lookforSwizzledProtocolName:"UITextFieldDelegate"
                                    originalSelector:@selector(textFieldShouldReturn:)
-                                      swizzledClass:[UITextView class]
-                                   swizzledSelector:@selector(ruleValidationTextFieldShouldReturn:)];
+                                      swizzledClass:[UITextField class]
+                                   swizzledSelector:@selector(validationTextFieldShouldReturn:)];
 
     });
+}
+
+- (void)dealloc
+{
+    DLog()
 }
 
 #pragma mark - @dynamic proerty
@@ -115,9 +119,12 @@
 - (__kindof IQRuleValidationManager *)getRuleManager
 {
     NSString *className = [self ruleManagerClassName];
-    if ([className length] && [[className class] isKindOfClass:[IQRuleValidationManager class]]) {
-        IQRuleValidationManager *manager = [[[className class] alloc] init];
-        return manager;
+    if ([className length]) {
+        id manager = [[NSClassFromString(className) alloc] init];
+        if ([manager isKindOfClass:[IQRuleValidationManager class]]) {
+            return manager;
+        }
+        return nil;
     }
     else {
         IQRuleValidationManager *manager = [IQRuleValidationManager ruleValidationManagerWithType:[self ruleType]];
@@ -127,58 +134,115 @@
 
 #pragma mark - swizzled UITextField method
 
-- (BOOL)ruleValidationTextFieldShouldBeginEditing:(UITextField *)textField
+- (BOOL)validationTextFieldShouldBeginEditing:(UITextField *)textField
 {
     DLog()
-    BOOL editing =  [self ruleValidationTextFieldShouldBeginEditing:textField];
-    BOOL ruleEditing = [textField textFieldShouldBeginEditing:textField];
+    BOOL editing =  [self validationTextFieldShouldBeginEditing:textField];
+    BOOL ruleEditing = [self textFieldShouldBeginEditing:textField];
     return editing && ruleEditing;
 }
 
-- (void)ruleValidationTextFieldDidBeginEditing:(UITextField *)textField
+- (void)validationTextFieldDidBeginEditing:(UITextField *)textField
 {
     DLog()
-    [self ruleValidationTextFieldDidBeginEditing:textField];
-    [textField textFieldDidBeginEditing:textField];
+    [self validationTextFieldDidBeginEditing:textField];
+    [self textFieldDidBeginEditing:textField];
 }
 
-- (BOOL)ruleValidationTextFieldShouldEndEditing:(UITextField *)textField
+- (BOOL)validationTextFieldShouldEndEditing:(UITextField *)textField
 {
     DLog()
-    BOOL editing = [self ruleValidationTextFieldShouldEndEditing:textField];
-    BOOL ruleEditing = [textField textFieldShouldEndEditing:textField];
+    BOOL editing = [self validationTextFieldShouldEndEditing:textField];
+    BOOL ruleEditing = [self textFieldShouldEndEditing:textField];
     return editing && ruleEditing;
 }
 
-- (void)ruleValidationTextFieldDidEndEditing:(UITextField *)textField
+- (void)validationTextFieldDidEndEditing:(UITextField *)textField
 {
     DLog()
-    [self ruleValidationTextFieldDidEndEditing:textField];
-    [textField textFieldDidEndEditing:textField];
+    [self validationTextFieldDidEndEditing:textField];
+    [self textFieldDidEndEditing:textField];
 }
 
-- (BOOL)ruleValidationTextField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+- (BOOL)validationTextField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     DLog();
-    BOOL editing = [self ruleValidationTextField:textField shouldChangeCharactersInRange:range replacementString:string];
-    BOOL ruleEditing = [textField textField:textField shouldChangeCharactersInRange:range replacementString:string];
+    BOOL editing = [self validationTextField:textField shouldChangeCharactersInRange:range replacementString:string];
+    BOOL ruleEditing = [self textField:textField shouldChangeCharactersInRange:range replacementString:string];
     return editing && ruleEditing;
 }
 
-- (BOOL)ruleValidationTextFieldShouldClear:(UITextField *)textField
+- (BOOL)validationTextFieldShouldClear:(UITextField *)textField
 {
     DLog()
-    BOOL editing = [self ruleValidationTextFieldShouldClear:textField];
-    BOOL ruleEditing = [textField textFieldShouldClear:textField];
+    BOOL editing = [self validationTextFieldShouldClear:textField];
+    BOOL ruleEditing = [self textFieldShouldClear:textField];
     return editing && ruleEditing;
 }
 
-- (BOOL)ruleValidationTextFieldShouldReturn:(UITextField *)textField
+- (BOOL)validationTextFieldShouldReturn:(UITextField *)textField
 {
     DLog()
-    BOOL editing = [self ruleValidationTextFieldShouldReturn:textField];
-    BOOL ruleEditing = [textField textFieldShouldReturn:textField];
+    BOOL editing = [self validationTextFieldShouldReturn:textField];
+    BOOL ruleEditing = [self textFieldShouldReturn:textField];
     return editing && ruleEditing;
+}
+
+#pragma mark - handle
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+    return [self textFieldShouldReturn:textField];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    //删除字符肯定是安全的
+    if ([string isEqualToString:@""]) {
+        return YES;
+    }
+    
+    __kindof IQRuleValidationManager *manager = [self getRuleManager];
+    if (manager) {
+        NSError *error = nil;
+        return [manager validationInputContentWhenChanged:[textField.text stringByReplacingCharactersInRange:range withString:string]
+                                                    error:&error];
+    }
+    return YES;
+}
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField
+{
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if ((textField.text.length > 0 && textField.text.length < textField.minRuleLength) || textField.text.length> textField.maxRuleLength) {
+        return NO;
+    }
+    
+    __kindof IQRuleValidationManager *manager = [self getRuleManager];
+    if (manager && textField.text.length > 0) {
+        NSError *error = nil;
+        return [manager validationInputContentWhileEndEditing:textField.text error:&error];
+    }
+    return YES;
 }
 
 @end

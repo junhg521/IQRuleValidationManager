@@ -8,7 +8,6 @@
 #import "UITextView+RuleAddition.h"
 #import "IQRuleValidationManager.h"
 #import "IQSwizzleUtils.h"
-#import "UITextView+RuleOperation.h"
 #import <objc/runtime.h>
 #import "IQRuleMacro.h"
 
@@ -27,35 +26,35 @@
         [IQSwizzleUtils lookforSwizzledProtocolName:"UITextViewDelegate"
                                    originalSelector:@selector(textViewShouldBeginEditing:)
                                       swizzledClass:[UITextView class]
-                                   swizzledSelector:@selector(ruleValidationTextViewShouldBeginEditing:)];
+                                   swizzledSelector:@selector(validationTextViewShouldBeginEditing:)];
         [IQSwizzleUtils lookforSwizzledProtocolName:"UITextViewDelegate"
                                    originalSelector:@selector(textViewShouldEndEditing:)
                                       swizzledClass:[UITextView class]
-                                   swizzledSelector:@selector(ruleValidationTextViewShouldEndEditing:)];
+                                   swizzledSelector:@selector(validationTextViewShouldEndEditing:)];
         [IQSwizzleUtils lookforSwizzledProtocolName:"UITextViewDelegate"
                                    originalSelector:@selector(textViewDidBeginEditing:)
                                       swizzledClass:[UITextView class]
-                                   swizzledSelector:@selector(ruleValidationTextViewDidBeginEditing:)];
+                                   swizzledSelector:@selector(validationTextViewDidBeginEditing:)];
         [IQSwizzleUtils lookforSwizzledProtocolName:"UITextViewDelegate"
                                    originalSelector:@selector(textView:shouldChangeTextInRange:replacementText:)
                                       swizzledClass:[UITextView class]
-                                   swizzledSelector:@selector(ruleValidationTextView:shouldChangeTextInRange:replacementText:)];
+                                   swizzledSelector:@selector(validationTextView:shouldChangeTextInRange:replacementText:)];
         [IQSwizzleUtils lookforSwizzledProtocolName:"UITextViewDelegate"
                                    originalSelector:@selector(textViewDidChange:)
                                       swizzledClass:[UITextView class]
-                                   swizzledSelector:@selector(ruleValidationTextViewDidChange:)];
+                                   swizzledSelector:@selector(validationTextViewDidChange:)];
         [IQSwizzleUtils lookforSwizzledProtocolName:"UITextViewDelegate"
                                    originalSelector:@selector(textViewDidChangeSelection:)
                                       swizzledClass:[UITextView class]
-                                   swizzledSelector:@selector(ruleValidationTextViewDidChangeSelection:)];
+                                   swizzledSelector:@selector(validationTextViewDidChangeSelection:)];
         [IQSwizzleUtils lookforSwizzledProtocolName:"UITextViewDelegate"
                                    originalSelector:@selector(textView:shouldInteractWithURL:inRange:)
                                       swizzledClass:[UITextView class]
-                                   swizzledSelector:@selector(ruleValidationTextView:shouldInteractWithURL:inRange:)];
+                                   swizzledSelector:@selector(validationTextView:shouldInteractWithURL:inRange:)];
         [IQSwizzleUtils lookforSwizzledProtocolName:"UITextViewDelegate"
                                    originalSelector:@selector(textView:shouldInteractWithTextAttachment:inRange:)
                                       swizzledClass:[UITextView class]
-                                   swizzledSelector:@selector(ruleValidationTextView:shouldInteractWithTextAttachment:inRange:)];
+                                   swizzledSelector:@selector(validationTextView:shouldInteractWithTextAttachment:inRange:)];
         
     });
 }
@@ -115,9 +114,12 @@
 - (__kindof IQRuleValidationManager *)getRuleManager
 {
     NSString *className = [self ruleManagerClassName];
-    if ([className length] && [[className class] isKindOfClass:[IQRuleValidationManager class]]) {
-        IQRuleValidationManager *manager = [[[className class] alloc] init];
-        return manager;
+    if ([className length]) {
+        id manager = [[NSClassFromString(className) alloc] init];
+        if ([manager isKindOfClass:[IQRuleValidationManager class]]) {
+            return manager;
+        }
+        return nil;
     }
     else {
         IQRuleValidationManager *manager = [IQRuleValidationManager ruleValidationManagerWithType:[self ruleType]];
@@ -127,72 +129,139 @@
 
 #pragma mark - swizzled UITextView Method
 
-- (BOOL)ruleValidationTextViewShouldBeginEditing:(UITextView *)textView
+- (BOOL)validationTextViewShouldBeginEditing:(UITextView *)textView
 {
     DLog()
-    BOOL editing = [self ruleValidationTextViewShouldBeginEditing:textView];
-    BOOL ruleEditing = [textView textViewShouldBeginEditing:textView];
+    BOOL editing = [self validationTextViewShouldBeginEditing:textView];
+    BOOL ruleEditing = [self textViewShouldBeginEditing:textView];
     return editing && ruleEditing;
 }
 
-- (BOOL)ruleValidationTextViewShouldEndEditing:(UITextView *)textView
+- (BOOL)validationTextViewShouldEndEditing:(UITextView *)textView
 {
     DLog()
-    BOOL editing = [self ruleValidationTextViewShouldEndEditing:textView];
-    BOOL ruleEditing = [textView textViewShouldEndEditing:textView];
+    BOOL editing = [self validationTextViewShouldEndEditing:textView];
+    BOOL ruleEditing = [self textViewShouldEndEditing:textView];
     return editing && ruleEditing;
 }
 
-- (void)ruleValidationTextViewDidBeginEditing:(UITextView *)textView
+- (void)validationTextViewDidBeginEditing:(UITextView *)textView
 {
     DLog()
-    [self ruleValidationTextViewDidBeginEditing:textView];
-    [textView textViewDidBeginEditing:textView];
+    [self validationTextViewDidBeginEditing:textView];
+    [self textViewDidBeginEditing:textView];
 }
 
-- (void)ruleValidationTextViewDidEndEditing:(UITextView *)textView
+- (void)validationTextViewDidEndEditing:(UITextView *)textView
 {
     DLog()
-    [self ruleValidationTextViewDidEndEditing:textView];
-    [textView textViewDidEndEditing:textView];
+    [self validationTextViewDidEndEditing:textView];
+    [self textViewDidEndEditing:textView];
 }
 
-- (BOOL)ruleValidationTextView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+- (BOOL)validationTextView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     DLog()
-    BOOL editing = [self ruleValidationTextView:textView shouldChangeTextInRange:range replacementText:text];
-    BOOL ruleEditing = [textView textView:textView shouldChangeTextInRange:range replacementText:text];
+    BOOL editing = [self validationTextView:textView shouldChangeTextInRange:range replacementText:text];
+    BOOL ruleEditing = [self textView:textView shouldChangeTextInRange:range replacementText:text];
     return editing && ruleEditing;
 }
 
-- (void)ruleValidationTextViewDidChange:(UITextView *)textView
+- (void)validationTextViewDidChange:(UITextView *)textView
 {
     DLog()
-    [self ruleValidationTextViewDidChange:textView];
-    [textView textViewDidChange:textView];
+    [self validationTextViewDidChange:textView];
+    [self textViewDidChange:textView];
 }
 
-- (void)ruleValidationTextViewDidChangeSelection:(UITextView *)textView
+- (void)validationTextViewDidChangeSelection:(UITextView *)textView
 {
     DLog()
-    [self ruleValidationTextViewDidChangeSelection:textView];
-    [textView textViewDidChangeSelection:textView];
+    [self validationTextViewDidChangeSelection:textView];
+    [self textViewDidChangeSelection:textView];
 }
 
-- (BOOL)ruleValidationTextView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
+- (BOOL)validationTextView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
 {
     DLog()
-    BOOL editing = [self ruleValidationTextView:textView shouldInteractWithURL:URL inRange:characterRange];
-    BOOL ruleEditing = [textView textView:textView shouldInteractWithURL:URL inRange:characterRange];
+    BOOL editing = [self validationTextView:textView shouldInteractWithURL:URL inRange:characterRange];
+    BOOL ruleEditing = [self textView:textView shouldInteractWithURL:URL inRange:characterRange];
     return editing && ruleEditing;
 }
 
-- (BOOL)ruleValidationTextView:(UITextView *)textView shouldInteractWithTextAttachment:(NSTextAttachment *)textAttachment inRange:(NSRange)characterRange
+- (BOOL)validationTextView:(UITextView *)textView shouldInteractWithTextAttachment:(NSTextAttachment *)textAttachment inRange:(NSRange)characterRange
 {
     DLog()
-    BOOL editing = [self ruleValidationTextView:textView shouldInteractWithTextAttachment:textAttachment inRange:characterRange];
-    BOOL ruleEditing = [textView textView:textView shouldInteractWithTextAttachment:textAttachment inRange:characterRange];
+    BOOL editing = [self validationTextView:textView shouldInteractWithTextAttachment:textAttachment inRange:characterRange];
+    BOOL ruleEditing = [self textView:textView shouldInteractWithTextAttachment:textAttachment inRange:characterRange];
     return editing && ruleEditing;
+}
+
+#pragma mark - handle
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
+{
+    return YES;
+}
+
+- (BOOL)textViewShouldEndEditing:(UITextView *)textView
+{
+    if ((textView.text.length > 0 && textView.text.length < textView.minRuleLength) || textView.text.length > textView.maxRuleLength) {
+        return NO;
+    }
+    
+    __kindof IQRuleValidationManager *manager = [self getRuleManager];
+    if (manager && textView.text.length > 0) {
+        NSError *error = nil;
+        return [manager validationInputContentWhileEndEditing:textView.text error:&error];
+    }
+    return YES;
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    //删除字符肯定是安全的
+    if ([text isEqualToString:@""]) {
+        return YES;
+    }
+    
+    __kindof IQRuleValidationManager *manager = [self getRuleManager];
+    if (manager) {
+        NSError *error = nil;
+        return [manager validationInputContentWhenChanged:[textView.text stringByReplacingCharactersInRange:range withString:text]
+                                                    error:&error];
+    }
+    return YES;
+}
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    
+}
+
+- (void)textViewDidChangeSelection:(UITextView *)textView
+{
+    
+}
+
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
+{
+    return YES;
+}
+
+- (BOOL)textView:(UITextView *)textView shouldInteractWithTextAttachment:(NSTextAttachment *)textAttachment inRange:(NSRange)characterRange
+{
+    return YES;
 }
 
 @end

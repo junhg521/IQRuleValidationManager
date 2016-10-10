@@ -15,9 +15,7 @@
 		BF3AD1731D8256DB00ECFCE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF3AD1711D8256DB00ECFCE9 /* LaunchScreen.storyboard */; };
 		BF3AD17E1D8256DC00ECFCE9 /* IQRuleValidationManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3AD17D1D8256DC00ECFCE9 /* IQRuleValidationManagerTests.m */; };
 		BF41EC541D869B3C00DFE5A7 /* UITextField+RuleAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = BF41EC461D869B3C00DFE5A7 /* UITextField+RuleAddition.m */; };
-		BF41EC551D869B3C00DFE5A7 /* UITextField+RuleOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BF41EC481D869B3C00DFE5A7 /* UITextField+RuleOperation.m */; };
 		BF41EC561D869B3C00DFE5A7 /* UITextView+RuleAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = BF41EC4A1D869B3C00DFE5A7 /* UITextView+RuleAddition.m */; };
-		BF41EC571D869B3C00DFE5A7 /* UITextView+RuleOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BF41EC4C1D869B3C00DFE5A7 /* UITextView+RuleOperation.m */; };
 		BF41EC581D869B3C00DFE5A7 /* IQIndirectlyImplementProtocolManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BF41EC4E1D869B3C00DFE5A7 /* IQIndirectlyImplementProtocolManager.m */; };
 		BF41EC591D869B3C00DFE5A7 /* IQRuleValidationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BF41EC511D869B3C00DFE5A7 /* IQRuleValidationManager.m */; };
 		BF41EC5A1D869B3C00DFE5A7 /* IQSwizzleUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BF41EC531D869B3C00DFE5A7 /* IQSwizzleUtils.m */; };
@@ -49,12 +47,8 @@
 		BF3AD17F1D8256DC00ECFCE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF41EC451D869B3C00DFE5A7 /* UITextField+RuleAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+RuleAddition.h"; sourceTree = "<group>"; };
 		BF41EC461D869B3C00DFE5A7 /* UITextField+RuleAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+RuleAddition.m"; sourceTree = "<group>"; };
-		BF41EC471D869B3C00DFE5A7 /* UITextField+RuleOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+RuleOperation.h"; sourceTree = "<group>"; };
-		BF41EC481D869B3C00DFE5A7 /* UITextField+RuleOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+RuleOperation.m"; sourceTree = "<group>"; };
 		BF41EC491D869B3C00DFE5A7 /* UITextView+RuleAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+RuleAddition.h"; sourceTree = "<group>"; };
 		BF41EC4A1D869B3C00DFE5A7 /* UITextView+RuleAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+RuleAddition.m"; sourceTree = "<group>"; };
-		BF41EC4B1D869B3C00DFE5A7 /* UITextView+RuleOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+RuleOperation.h"; sourceTree = "<group>"; };
-		BF41EC4C1D869B3C00DFE5A7 /* UITextView+RuleOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+RuleOperation.m"; sourceTree = "<group>"; };
 		BF41EC4D1D869B3C00DFE5A7 /* IQIndirectlyImplementProtocolManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQIndirectlyImplementProtocolManager.h; sourceTree = "<group>"; };
 		BF41EC4E1D869B3C00DFE5A7 /* IQIndirectlyImplementProtocolManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQIndirectlyImplementProtocolManager.m; sourceTree = "<group>"; };
 		BF41EC4F1D869B3C00DFE5A7 /* IQRuleMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQRuleMacro.h; sourceTree = "<group>"; };
@@ -156,12 +150,8 @@
 			children = (
 				BF41EC451D869B3C00DFE5A7 /* UITextField+RuleAddition.h */,
 				BF41EC461D869B3C00DFE5A7 /* UITextField+RuleAddition.m */,
-				BF41EC471D869B3C00DFE5A7 /* UITextField+RuleOperation.h */,
-				BF41EC481D869B3C00DFE5A7 /* UITextField+RuleOperation.m */,
 				BF41EC491D869B3C00DFE5A7 /* UITextView+RuleAddition.h */,
 				BF41EC4A1D869B3C00DFE5A7 /* UITextView+RuleAddition.m */,
-				BF41EC4B1D869B3C00DFE5A7 /* UITextView+RuleOperation.h */,
-				BF41EC4C1D869B3C00DFE5A7 /* UITextView+RuleOperation.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -273,9 +263,7 @@
 				BF3AD1681D8256DB00ECFCE9 /* AppDelegate.m in Sources */,
 				BF3AD1651D8256DB00ECFCE9 /* main.m in Sources */,
 				BF41EC541D869B3C00DFE5A7 /* UITextField+RuleAddition.m in Sources */,
-				BF41EC571D869B3C00DFE5A7 /* UITextView+RuleOperation.m in Sources */,
 				BF41EC5A1D869B3C00DFE5A7 /* IQSwizzleUtils.m in Sources */,
-				BF41EC551D869B3C00DFE5A7 /* UITextField+RuleOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

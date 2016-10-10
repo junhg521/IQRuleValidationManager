@@ -19,7 +19,7 @@ typedef NS_ENUM(NSUInteger, IQRuleValidationType)
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol IQRuleValidationManager <NSObject>
+@protocol IQRuleValidationManagerDelegate <NSObject>
 
 @required
 /**
@@ -49,7 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface IQRuleValidationManager : NSObject<IQRuleValidationManager>
+@interface IQRuleValidationManager : NSObject<IQRuleValidationManagerDelegate>
 /**
  *  @brief  实例化IQRuleValidationManager
  *
