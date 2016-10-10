@@ -133,7 +133,7 @@
 {
     DLog()
     BOOL editing = [self validationTextViewShouldBeginEditing:textView];
-    BOOL ruleEditing = [self textViewShouldBeginEditing:textView];
+    BOOL ruleEditing = [textView handleTextViewShouldBeginEditing:textView];
     return editing && ruleEditing;
 }
 
@@ -141,7 +141,7 @@
 {
     DLog()
     BOOL editing = [self validationTextViewShouldEndEditing:textView];
-    BOOL ruleEditing = [self textViewShouldEndEditing:textView];
+    BOOL ruleEditing = [textView handleTextViewShouldEndEditing:textView];
     return editing && ruleEditing;
 }
 
@@ -149,21 +149,21 @@
 {
     DLog()
     [self validationTextViewDidBeginEditing:textView];
-    [self textViewDidBeginEditing:textView];
+    [self handleTextViewDidBeginEditing:textView];
 }
 
 - (void)validationTextViewDidEndEditing:(UITextView *)textView
 {
     DLog()
     [self validationTextViewDidEndEditing:textView];
-    [self textViewDidEndEditing:textView];
+    [textView handleTextViewDidEndEditing:textView];
 }
 
 - (BOOL)validationTextView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     DLog()
     BOOL editing = [self validationTextView:textView shouldChangeTextInRange:range replacementText:text];
-    BOOL ruleEditing = [self textView:textView shouldChangeTextInRange:range replacementText:text];
+    BOOL ruleEditing = [textView handleTextView:textView shouldChangeTextInRange:range replacementText:text];
     return editing && ruleEditing;
 }
 
@@ -171,21 +171,21 @@
 {
     DLog()
     [self validationTextViewDidChange:textView];
-    [self textViewDidChange:textView];
+    [textView handleTextViewDidChange:textView];
 }
 
 - (void)validationTextViewDidChangeSelection:(UITextView *)textView
 {
     DLog()
     [self validationTextViewDidChangeSelection:textView];
-    [self textViewDidChangeSelection:textView];
+    [textView handleTextViewDidChangeSelection:textView];
 }
 
 - (BOOL)validationTextView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
 {
     DLog()
     BOOL editing = [self validationTextView:textView shouldInteractWithURL:URL inRange:characterRange];
-    BOOL ruleEditing = [self textView:textView shouldInteractWithURL:URL inRange:characterRange];
+    BOOL ruleEditing = [textView handleTextView:textView shouldInteractWithURL:URL inRange:characterRange];
     return editing && ruleEditing;
 }
 
@@ -193,18 +193,18 @@
 {
     DLog()
     BOOL editing = [self validationTextView:textView shouldInteractWithTextAttachment:textAttachment inRange:characterRange];
-    BOOL ruleEditing = [self textView:textView shouldInteractWithTextAttachment:textAttachment inRange:characterRange];
+    BOOL ruleEditing = [textView handleTextView:textView shouldInteractWithTextAttachment:textAttachment inRange:characterRange];
     return editing && ruleEditing;
 }
 
 #pragma mark - handle
 
-- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
+- (BOOL)handleTextViewShouldBeginEditing:(UITextView *)textView
 {
     return YES;
 }
 
-- (BOOL)textViewShouldEndEditing:(UITextView *)textView
+- (BOOL)handleTextViewShouldEndEditing:(UITextView *)textView
 {
     if ((textView.text.length > 0 && textView.text.length < textView.minRuleLength) || textView.text.length > textView.maxRuleLength) {
         return NO;
@@ -218,17 +218,20 @@
     return YES;
 }
 
-- (void)textViewDidBeginEditing:(UITextView *)textView
+- (void)handleTextViewDidBeginEditing:(UITextView *)textView
 {
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(textViewValueChangedNotification:)
+                                                 name:UITextViewTextDidChangeNotification
+                                               object:nil];
 }
 
-- (void)textViewDidEndEditing:(UITextView *)textView
+- (void)handleTextViewDidEndEditing:(UITextView *)textView
 {
-    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+- (BOOL)handleTextView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     //删除字符肯定是安全的
     if ([text isEqualToString:@""]) {
@@ -244,24 +247,33 @@
     return YES;
 }
 
-- (void)textViewDidChange:(UITextView *)textView
+- (void)handleTextViewDidChange:(UITextView *)textView
 {
     
 }
 
-- (void)textViewDidChangeSelection:(UITextView *)textView
+- (void)handleTextViewDidChangeSelection:(UITextView *)textView
 {
     
 }
 
-- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
+- (BOOL)handleTextView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
 {
     return YES;
 }
 
-- (BOOL)textView:(UITextView *)textView shouldInteractWithTextAttachment:(NSTextAttachment *)textAttachment inRange:(NSRange)characterRange
+- (BOOL)handleTextView:(UITextView *)textView shouldInteractWithTextAttachment:(NSTextAttachment *)textAttachment inRange:(NSRange)characterRange
 {
     return YES;
+}
+
+#pragma mark - notification
+
+- (void)textViewValueChangedNotification:(NSNotification *)notification
+{
+    if ([self.text length] > self.maxRuleLength) {
+        self.text = [self.text substringWithRange:NSMakeRange(0, self.maxRuleLength)];
+    }
 }
 
 @end

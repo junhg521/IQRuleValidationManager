@@ -55,11 +55,6 @@
     });
 }
 
-- (void)dealloc
-{
-    DLog()
-}
-
 #pragma mark - @dynamic proerty
 
 - (void)setMaxRuleLength:(NSInteger)maxRuleLength
@@ -138,7 +133,7 @@
 {
     DLog()
     BOOL editing =  [self validationTextFieldShouldBeginEditing:textField];
-    BOOL ruleEditing = [self textFieldShouldBeginEditing:textField];
+    BOOL ruleEditing = [textField handleTextFieldShouldBeginEditing:textField];
     return editing && ruleEditing;
 }
 
@@ -146,14 +141,14 @@
 {
     DLog()
     [self validationTextFieldDidBeginEditing:textField];
-    [self textFieldDidBeginEditing:textField];
+    [textField handleTextFieldDidBeginEditing:textField];
 }
 
 - (BOOL)validationTextFieldShouldEndEditing:(UITextField *)textField
 {
     DLog()
     BOOL editing = [self validationTextFieldShouldEndEditing:textField];
-    BOOL ruleEditing = [self textFieldShouldEndEditing:textField];
+    BOOL ruleEditing = [textField handleTextFieldShouldEndEditing:textField];
     return editing && ruleEditing;
 }
 
@@ -161,14 +156,14 @@
 {
     DLog()
     [self validationTextFieldDidEndEditing:textField];
-    [self textFieldDidEndEditing:textField];
+    [textField handleTextFieldDidEndEditing:textField];
 }
 
 - (BOOL)validationTextField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     DLog();
     BOOL editing = [self validationTextField:textField shouldChangeCharactersInRange:range replacementString:string];
-    BOOL ruleEditing = [self textField:textField shouldChangeCharactersInRange:range replacementString:string];
+    BOOL ruleEditing = [textField hanleTextField:textField shouldChangeCharactersInRange:range replacementString:string];
     return editing && ruleEditing;
 }
 
@@ -176,7 +171,7 @@
 {
     DLog()
     BOOL editing = [self validationTextFieldShouldClear:textField];
-    BOOL ruleEditing = [self textFieldShouldClear:textField];
+    BOOL ruleEditing = [textField handleTextFieldShouldClear:textField];
     return editing && ruleEditing;
 }
 
@@ -184,33 +179,36 @@
 {
     DLog()
     BOOL editing = [self validationTextFieldShouldReturn:textField];
-    BOOL ruleEditing = [self textFieldShouldReturn:textField];
+    BOOL ruleEditing = [textField handleTextFieldShouldReturn:textField];
     return editing && ruleEditing;
 }
 
 #pragma mark - handle
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+- (BOOL)handleTextFieldShouldBeginEditing:(UITextField *)textField
 {
     return YES;
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField
+- (void)handleTextFieldDidBeginEditing:(UITextField *)textField
 {
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(textFieldValueChangedNotification:)
+                                                 name:UITextFieldTextDidChangeNotification
+                                               object:nil];
 }
 
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+- (BOOL)handleTextFieldShouldEndEditing:(UITextField *)textField
 {
-    return [self textFieldShouldReturn:textField];
+    return [self handleTextFieldShouldReturn:textField];
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField
+- (void)handleTextFieldDidEndEditing:(UITextField *)textField
 {
-    
+     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+- (BOOL)hanleTextField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     //删除字符肯定是安全的
     if ([string isEqualToString:@""]) {
@@ -226,12 +224,12 @@
     return YES;
 }
 
-- (BOOL)textFieldShouldClear:(UITextField *)textField
+- (BOOL)handleTextFieldShouldClear:(UITextField *)textField
 {
     return YES;
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
+- (BOOL)handleTextFieldShouldReturn:(UITextField *)textField
 {
     if ((textField.text.length > 0 && textField.text.length < textField.minRuleLength) || textField.text.length> textField.maxRuleLength) {
         return NO;
@@ -243,6 +241,15 @@
         return [manager validationInputContentWhileEndEditing:textField.text error:&error];
     }
     return YES;
+}
+
+#pragma mark - notification
+
+- (void)textFieldValueChangedNotification:(NSNotification *)notification
+{
+    if ([self.text length] > self.maxRuleLength) {
+        self.text = [self.text substringWithRange:NSMakeRange(0, self.maxRuleLength)];
+    }
 }
 
 @end
