@@ -73,10 +73,6 @@
         case IQRuleValidationMobile:
             regularExpression = @"^1(3[0-9]|4[57]|5[0-35-9]|7[01678]|8[0-9])\\d{8}$";
             break;
-            
-        case IQRuleValidationQQ:
-            regularExpression = @"[1-9]\\d{4,}";
-            break;
         default:
             break;
     }
@@ -100,10 +96,6 @@
             
         case IQRuleValidationMobile:
             regularExpression = @"^1(3[0-9]|4[57]|5[0-35-9]|7[01678]|8[0-9])\\d{8}$";
-            break;
-            
-        case IQRuleValidationQQ:
-            regularExpression = @"[1-9]\\d{4,}";
             break;
         default:
             break;

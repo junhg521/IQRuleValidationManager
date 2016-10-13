@@ -247,7 +247,7 @@
 
 - (void)textFieldValueChangedNotification:(NSNotification *)notification
 {
-    if ([self.text length] > self.maxRuleLength) {
+    if ([self.text length] > self.maxRuleLength && self.maxRuleLength) {
         self.text = [self.text substringWithRange:NSMakeRange(0, self.maxRuleLength)];
     }
 }

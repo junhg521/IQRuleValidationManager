@@ -10,7 +10,7 @@
 
 @implementation IQIndirectlyImplementProtocolManager
 
-#pragma mark  UITextFieldDelegate
+#pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
@@ -52,7 +52,7 @@
     return YES;
 }
 
-#pragma mark  UITextViewDelegate
+#pragma mark - UITextViewDelegate
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
