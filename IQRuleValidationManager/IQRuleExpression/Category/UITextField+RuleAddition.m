@@ -200,7 +200,18 @@
 
 - (BOOL)handleTextFieldShouldEndEditing:(UITextField *)textField
 {
-    return [self handleTextFieldShouldReturn:textField];
+    [textField resignFirstResponder];
+    
+    if ((textField.text.length > 0 && textField.text.length < textField.minRuleLength) || textField.text.length> textField.maxRuleLength) {
+        return NO;
+    }
+    
+    __kindof IQRuleValidationManager *manager = [self getRuleManager];
+    if (manager && textField.text.length > 0) {
+        NSError *error = nil;
+        return [manager validationInputContentWhileEndEditing:textField.text error:&error];
+    }
+    return YES;
 }
 
 - (void)handleTextFieldDidEndEditing:(UITextField *)textField
@@ -231,15 +242,6 @@
 
 - (BOOL)handleTextFieldShouldReturn:(UITextField *)textField
 {
-    if ((textField.text.length > 0 && textField.text.length < textField.minRuleLength) || textField.text.length> textField.maxRuleLength) {
-        return NO;
-    }
-    
-    __kindof IQRuleValidationManager *manager = [self getRuleManager];
-    if (manager && textField.text.length > 0) {
-        NSError *error = nil;
-        return [manager validationInputContentWhileEndEditing:textField.text error:&error];
-    }
     return YES;
 }
 

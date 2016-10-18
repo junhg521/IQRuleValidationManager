@@ -64,7 +64,8 @@
     for (NSInteger i=0; i<classesCount; i++) {
         @autoreleasepool {
             Class conformClass = classes[i];
-            if (![NSStringFromClass(conformClass) hasPrefix:@"BP"] || [NSStringFromClass(conformClass) isEqualToString:@"IQIndirectlyImplementProtocolManager"]) {
+            if ([NSStringFromClass(conformClass) isEqualToString:@"IQIndirectlyImplementProtocolManager"]
+                ) {
                 continue;
             }
             while (conformClass != Nil) {
@@ -74,6 +75,9 @@
                 conformClass = class_getSuperclass(conformClass);
             }
             
+            if ([NSStringFromClass(conformClass) hasPrefix:@"UI"] || [NSStringFromClass(conformClass) hasPrefix:@"_UI"]) {
+                continue;
+            }
             if (conformClass != Nil) {
                 unsigned int methodsCount = 0;
                 class_copyMethodList(conformClass, &methodsCount);

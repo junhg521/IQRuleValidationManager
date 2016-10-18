@@ -11,9 +11,17 @@
 typedef NS_ENUM(NSUInteger, IQRuleValidationType)
 {
     IQRuleValidationNone = 0,
-    IQRuleValidationPositive,                       // such as 1, 11,1111,11111
-    IQRuleValidationPositiveWithTwoDecimalPoint, // such as 1.23, 11.23 111.23,1111.23
-    IQRuleValidationMobile,
+    IQRuleValidationNumber,                       // such as 1, 11,1111,11111
+    IQRuleValidationNumberWithTwoDecimalPoint, // such as 1.23, 11.23 111.23,1111.23
+    IQRuleValidationMobile,                     //
+    IQRuleValidationAlphaAndNumber,             // such as a132,abcd1
+    IQRuleValidationAlpha,                      // such as Aa, AAa, AAAa
+    IQRuleValidationUppercaseAlpha,             // such as A, AA, AAA
+    IQRuleValidationLowercaseAlpha,             // such as a, aa, aaa
+    IQRuleValidationAlphaAndNumberAndUnderLine, // such a_43, a43, ab
+    IQRuleValidationMonthInYear,                // such as 01, 02, 1, 2
+    IQRuleValidationDaysInMonth,                // such as 1, 2, 3 ..31
+    IQRuleValidationEmail,
 };
 
 NS_ASSUME_NONNULL_BEGIN

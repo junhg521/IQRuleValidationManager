@@ -11,7 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface IQSwizzleUtils : NSObject
 /**
- *  @brief  替换所有遵循protocolName协议的方法
+ *  @brief  替换所有遵循protocolName协议的方法, 去除对系统类型方法进行替换（如：UI,_UI开头的系统类），所以工程命令时请不要使用改
+ *  类型的开头
  *
  *  @param protocolName     协议名
  *  @param originalSelector 协议的 old selector

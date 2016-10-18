@@ -19,11 +19,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    self.nameTextField.ruleType = IQRuleValidationPositiveWithTwoDecimalPoint;
+    self.nameTextField.ruleType = IQRuleValidationNumberWithTwoDecimalPoint;
     self.nameTextField.keyboardType = UIKeyboardTypeDecimalPad;
     self.nameTextField.delegate = self;
     
-    self.passwordTextField.ruleType = IQRuleValidationPositive;
+    self.passwordTextField.ruleType = IQRuleValidationNumber;
     self.passwordTextField.keyboardType = UIKeyboardTypeNumberPad;
     self.passwordTextField.delegate = self;
 }

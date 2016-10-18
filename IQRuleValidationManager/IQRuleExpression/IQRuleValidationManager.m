@@ -61,17 +61,38 @@
     switch (self.type) {
         case IQRuleValidationNone:
             break;
-            
-        case IQRuleValidationPositiveWithTwoDecimalPoint:
+        case IQRuleValidationNumberWithTwoDecimalPoint:
             regularExpression = @"^(0|[1-9]\\d*)(\\.[0-9]{0,2})?$";
             break;
-            
-        case IQRuleValidationPositive:
-            regularExpression = @"^[1-9]\\d*$";
+        case IQRuleValidationNumber:
+            regularExpression = @"^[1-9]+$";
             break;
-            
         case IQRuleValidationMobile:
             regularExpression = @"^1(3[0-9]|4[57]|5[0-35-9]|7[01678]|8[0-9])\\d{8}$";
+            break;
+        case IQRuleValidationAlphaAndNumber:
+            regularExpression = @"^[a-zA-Z0-9]+$";
+            break;
+        case IQRuleValidationAlpha:
+            regularExpression = @"^[A-Za-z]+$";
+            break;
+        case IQRuleValidationUppercaseAlpha:
+            regularExpression = @"^[A-Z]+$";
+            break;
+        case IQRuleValidationLowercaseAlpha:
+            regularExpression = @"^[a-z]+$";
+            break;
+        case IQRuleValidationAlphaAndNumberAndUnderLine:
+            regularExpression = @"^w+$";
+            break;
+        case IQRuleValidationMonthInYear:
+            regularExpression = @"^(0?[1-9]|1[0-2])$";
+            break;
+        case IQRuleValidationDaysInMonth:
+            regularExpression = @"^((0?[1-9])|((1|2)[0-9])|30|31)$";
+            break;
+        case IQRuleValidationEmail:
+            regularExpression = @"w+([-+.]w+)*@w+([-.]w+)*.w+([-.]w+)*";
             break;
         default:
             break;
@@ -85,17 +106,38 @@
     switch (self.type) {
         case IQRuleValidationNone:
             break;
-            
-        case IQRuleValidationPositiveWithTwoDecimalPoint:
+        case IQRuleValidationNumberWithTwoDecimalPoint:
             regularExpression = @"^(0|[1-9]\\d*)(\\.[0-9]{1,2})?$";
             break;
-            
-        case IQRuleValidationPositive:
-            regularExpression = @"^[1-9]\\d*$";
+        case IQRuleValidationNumber:
+            regularExpression = @"^[1-9]+$";
             break;
-            
         case IQRuleValidationMobile:
             regularExpression = @"^1(3[0-9]|4[57]|5[0-35-9]|7[01678]|8[0-9])\\d{8}$";
+            break;
+        case IQRuleValidationAlphaAndNumber:
+            regularExpression = @"^[a-zA-Z0-9]+$";
+            break;
+        case IQRuleValidationAlpha:
+            regularExpression = @"^[A-Za-z]+$";
+            break;
+        case IQRuleValidationUppercaseAlpha:
+            regularExpression = @"^[A-Z]+$";
+            break;
+        case IQRuleValidationLowercaseAlpha:
+            regularExpression = @"^[a-z]+$";
+            break;
+        case IQRuleValidationAlphaAndNumberAndUnderLine:
+            regularExpression = @"^w+$";
+            break;
+        case IQRuleValidationMonthInYear:
+            regularExpression = @"^(0?[1-9]|1[0-2])$";
+            break;
+        case IQRuleValidationDaysInMonth:
+            regularExpression = @"^((0?[1-9])|((1|2)[0-9])|30|31)$";
+            break;
+        case IQRuleValidationEmail:
+            regularExpression = @"w+([-+.]w+)*@w+([-.]w+)*.w+([-.]w+)*";
             break;
         default:
             break;
