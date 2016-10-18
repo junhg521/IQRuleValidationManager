@@ -206,7 +206,8 @@
 
 - (BOOL)handleTextViewShouldEndEditing:(UITextView *)textView
 {
-    if ((textView.text.length > 0 && textView.text.length < textView.minRuleLength) || textView.text.length > textView.maxRuleLength) {
+    // 设置UITextView最少需要输入的字符
+    if (textView.minRuleLength > 0 && textView.text.length < textView.minRuleLength) {
         return NO;
     }
     

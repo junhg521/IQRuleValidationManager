@@ -202,7 +202,11 @@
 {
     [textField resignFirstResponder];
     
-    if ((textField.text.length > 0 && textField.text.length < textField.minRuleLength) || textField.text.length> textField.maxRuleLength) {
+    /*
+     * 设置UITextField最少需要输入的字符
+     *
+     */
+    if (textField.minRuleLength > 0 && textField.text.length < textField.minRuleLength) {
         return NO;
     }
     
