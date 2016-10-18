@@ -19,6 +19,7 @@
 		BF41EC581D869B3C00DFE5A7 /* IQIndirectlyImplementProtocolManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BF41EC4E1D869B3C00DFE5A7 /* IQIndirectlyImplementProtocolManager.m */; };
 		BF41EC591D869B3C00DFE5A7 /* IQRuleValidationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BF41EC511D869B3C00DFE5A7 /* IQRuleValidationManager.m */; };
 		BF41EC5A1D869B3C00DFE5A7 /* IQSwizzleUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BF41EC531D869B3C00DFE5A7 /* IQSwizzleUtils.m */; };
+		BF5667F01DB5C15E00017D4C /* NSString+EscapePrefix.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5667EF1DB5C15E00017D4C /* NSString+EscapePrefix.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		BF41EC511D869B3C00DFE5A7 /* IQRuleValidationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQRuleValidationManager.m; sourceTree = "<group>"; };
 		BF41EC521D869B3C00DFE5A7 /* IQSwizzleUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQSwizzleUtils.h; sourceTree = "<group>"; };
 		BF41EC531D869B3C00DFE5A7 /* IQSwizzleUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQSwizzleUtils.m; sourceTree = "<group>"; };
+		BF5667EE1DB5C15E00017D4C /* NSString+EscapePrefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+EscapePrefix.h"; sourceTree = "<group>"; };
+		BF5667EF1DB5C15E00017D4C /* NSString+EscapePrefix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+EscapePrefix.m"; sourceTree = "<group>"; };
 		BF79ACEB1D992028007E0D83 /* IQRuleExpression.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQRuleExpression.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -148,6 +151,8 @@
 		BF41EC441D869B3C00DFE5A7 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				BF5667EE1DB5C15E00017D4C /* NSString+EscapePrefix.h */,
+				BF5667EF1DB5C15E00017D4C /* NSString+EscapePrefix.m */,
 				BF41EC451D869B3C00DFE5A7 /* UITextField+RuleAddition.h */,
 				BF41EC461D869B3C00DFE5A7 /* UITextField+RuleAddition.m */,
 				BF41EC491D869B3C00DFE5A7 /* UITextView+RuleAddition.h */,
@@ -257,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF3AD16B1D8256DB00ECFCE9 /* ViewController.m in Sources */,
+				BF5667F01DB5C15E00017D4C /* NSString+EscapePrefix.m in Sources */,
 				BF41EC591D869B3C00DFE5A7 /* IQRuleValidationManager.m in Sources */,
 				BF41EC561D869B3C00DFE5A7 /* UITextView+RuleAddition.m in Sources */,
 				BF41EC581D869B3C00DFE5A7 /* IQIndirectlyImplementProtocolManager.m in Sources */,
