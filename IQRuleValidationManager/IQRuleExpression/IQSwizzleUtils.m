@@ -7,7 +7,6 @@
 
 #import "IQSwizzleUtils.h"
 #import "IQIndirectlyImplementProtocolManager.h"
-#import "NSString+EscapePrefix.h"
 #import <objc/runtime.h>
 
 @implementation IQSwizzleUtils
@@ -65,32 +64,22 @@
     for (NSInteger i=0; i<classesCount; i++) {
         @autoreleasepool {
             Class conformClass = classes[i];
-            
-            if ([NSStringFromClass(conformClass) isEqualToString:@"IQIndirectlyImplementProtocolManager"]
-                ) {
-                continue;
-            }
             while (conformClass != Nil) {
                 if (class_conformsToProtocol(conformClass, protocol)) {
                     break;
                 }
                 conformClass = class_getSuperclass(conformClass);
             }
-            
-            /**
-             对实现UITextField/UITextView的系统类别进行过滤，可以在此添加需要过滤的系统类别
-
-             @param conformClass
-
-             @return 返回YES，表示过滤，NO表示可以swizzle
-             */
-            if ([NSStringFromClass(conformClass) escapeWithClassPrefix:@"UI"] ||
-                [NSStringFromClass(conformClass) escapeWithClassPrefix:@"_UI"] ||
-                [NSStringFromClass(conformClass) escapeWithClassPrefix:@"AB"] ||
-                [NSStringFromClass(conformClass) escapeWithClassPrefix:@"CN"]) {
+            if ([NSStringFromClass(conformClass) isEqualToString:@"IQIndirectlyImplementProtocolManager"]) {
                 continue;
             }
-            
+            if ([NSStringFromClass(conformClass) hasPrefix:@"UI"] ||
+                [NSStringFromClass(conformClass) hasPrefix:@"_UI"] ||
+                [NSStringFromClass(conformClass) hasPrefix:@"AB"] ||
+                [NSStringFromClass(conformClass) hasPrefix:@"CN"]
+                 ) {
+                continue;
+            }
             if (conformClass != Nil) {
                 unsigned int methodsCount = 0;
                 class_copyMethodList(conformClass, &methodsCount);
@@ -110,7 +99,6 @@
         classes = nil;
     }
 }
-
 
 + (void)lookforSwizzledProtocolName:( const char * _Nonnull )protocolName originalSelector:(_Nonnull SEL)originalSelector  swizzledClass:(_Nonnull Class)swizzledClass swizzledSelector:(_Nonnull SEL) swizzledSelector
 {
