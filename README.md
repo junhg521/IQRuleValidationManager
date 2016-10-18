@@ -49,8 +49,10 @@
 @property(strong) UITextField *textField;
 
 self.textField.ruleType = IQRuleValidationType中的一种类型
+self.textField..delegate = self;
 或使用
 self.textField.ruleManagerClassName = @"自定义的规则名字";
+self.textField..delegate = self;
 ```
 
 ## IQRuleValidationManager原理
@@ -103,11 +105,20 @@ IQRuleValidationManager主要采用swizzle技术对于**遵循ItextViewDelegate/
 typedef NS_ENUM(NSUInteger, IQRuleValidationType)
 {
     IQRuleValidationNone = 0,
-    IQRuleValidationPositive,                       // such as 1, 11,1111,11111
-    IQRuleValidationPositiveWithTwoDecimalPoint, // such as 1.23, 11.23 111.23,1111.23
+    IQRuleValidationNumber,                       // such as 1, 11,1111,11111
+    IQRuleValidationNumberWithTwoDecimalPoint, // such as 1.23, 11.23 111.23,1111.23
+    IQRuleValidationMobile,                     //
+    IQRuleValidationAlphaAndNumber,             // such as a132,abcd1
+    IQRuleValidationAlpha,                      // such as Aa, AAa, AAAa
+    IQRuleValidationUppercaseAlpha,             // such as A, AA, AAA
+    IQRuleValidationLowercaseAlpha,             // such as a, aa, aaa
+    IQRuleValidationAlphaAndNumberAndUnderLine, // such a_43, a43, ab
+    IQRuleValidationMonthInYear,                // such as 01, 02, 1, 2
+    IQRuleValidationDaysInMonth,                // such as 1, 2, 3 ..31
+    IQRuleValidationEmail,
 };
 ```
 
 
 ## IQRuleValidationManager缺陷
-目前所用到的规则较少，暂代更新
+目前所用到的规则较少，暂代更新,欢迎各位大神对代码进行完善及提好的意见
