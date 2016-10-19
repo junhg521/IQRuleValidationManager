@@ -11,8 +11,8 @@
 typedef NS_ENUM(NSUInteger, IQRuleValidationType)
 {
     IQRuleValidationNone = 0,
-    IQRuleValidationNumber,                       // such as 1, 11,1111,11111
     IQRuleValidationNumberWithTwoDecimalPoint, // such as 1.23, 11.23 111.23,1111.23
+    IQRuleValidationNumber,                       // such as 1, 11,1111,11111
     IQRuleValidationMobile,                     //
     IQRuleValidationAlphaAndNumber,             // such as a132,abcd1
     IQRuleValidationAlpha,                      // such as Aa, AAa, AAAa

@@ -65,10 +65,10 @@
             regularExpression = @"^(0|[1-9]\\d*)(\\.[0-9]{0,2})?$";
             break;
         case IQRuleValidationNumber:
-            regularExpression = @"^[1-9]+$";
+            regularExpression = @"^[1-9]\\d*$";
             break;
         case IQRuleValidationMobile:
-            regularExpression = @"^1(3[0-9]|4[57]|5[0-35-9]|7[01678]|8[0-9])\\d{8}$";
+//            regularExpression = @"^1(3[0-9]|4[57]|5[0-35-9]|7[01678]|8[0-9])\\d{8}$";
             break;
         case IQRuleValidationAlphaAndNumber:
             regularExpression = @"^[a-zA-Z0-9]+$";
@@ -92,7 +92,7 @@
             regularExpression = @"^((0?[1-9])|((1|2)[0-9])|30|31)$";
             break;
         case IQRuleValidationEmail:
-            regularExpression = @"w+([-+.]w+)*@w+([-.]w+)*.w+([-.]w+)*";
+            
             break;
         default:
             break;
@@ -110,7 +110,7 @@
             regularExpression = @"^(0|[1-9]\\d*)(\\.[0-9]{1,2})?$";
             break;
         case IQRuleValidationNumber:
-            regularExpression = @"^[1-9]+$";
+            regularExpression = @"^[1-9]\\d*$";
             break;
         case IQRuleValidationMobile:
             regularExpression = @"^1(3[0-9]|4[57]|5[0-35-9]|7[01678]|8[0-9])\\d{8}$";
@@ -137,7 +137,7 @@
             regularExpression = @"^((0?[1-9])|((1|2)[0-9])|30|31)$";
             break;
         case IQRuleValidationEmail:
-            regularExpression = @"w+([-+.]w+)*@w+([-.]w+)*.w+([-.]w+)*";
+            regularExpression = @"^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$";
             break;
         default:
             break;
