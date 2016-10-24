@@ -59,10 +59,10 @@ self.textField..delegate = self;
 IQRuleValidationManager主要采用swizzle技术对于**遵循ItextViewDelegate/UITextFieldDelegate**的类替换/添加相应的方法
 
 未实现协议实现的原理图如下所示
-![未实现协议的原理图](http://junhg521.github.io/JSSource/swizzle/swizzleInd.png)
+![未实现协议的原理图](http://junhg521.github.io/IQRuleValidationManager/swizzle/swizzleInd.png)
 
 实现协议实现的原理图如下所示
-![实现协议的原理图](http://junhg521.github.io/JSSource/swizzle/swizzle.png)
+![实现协议的原理图](http://junhg521.github.io/IQRuleValidationManager/swizzle/swizzle.png)
 ### IQIndirectlyImplementProtocolManager
 默认实现**UITextFieldDelegate/UITextViewDelegate**的方法，提供**遵循ItextViewDelegate/UITextFieldDelegate**的类为实现其协议方法时为其添加默认的实现方法，用于能够swizzle到相关的实现代码
 ### IQRuleValidationManager
