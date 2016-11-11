@@ -149,7 +149,7 @@
 {
     DLog()
     [self validationTextViewDidBeginEditing:textView];
-    [self handleTextViewDidBeginEditing:textView];
+    [textView handleTextViewDidBeginEditing:textView];
 }
 
 - (void)validationTextViewDidEndEditing:(UITextView *)textView
