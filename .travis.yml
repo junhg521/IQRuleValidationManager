@@ -1,9 +1,3 @@
-languae: objective-c
-osx_image: xcode7.3
-env:
-  - UDID="5752202B-E7A2-4B6C-9D7B-B211C2F54654", IOS_DEVICE="iPhone 6s (9.3)"
-script:
-    - xcrun instruments -s devices
-    - open -a "simulator" --args -CurrentDeviceUDID $UDID
-    - xcodebuild test -project ./IQRuleValidationManager.xcodeproj -scheme IQRuleValidationManager -sdk iphonesimulator -destination "platform=iOS Simulator,id=$UDID"
-    - osascript -e 'tell app "Simulator" to quit'
+language: objective-c
+xcode_project: IQRuleValidationManager.xcodeproj # path to your xcodeproj folder
+xcode_scheme: IQRuleValidationManagerTests
