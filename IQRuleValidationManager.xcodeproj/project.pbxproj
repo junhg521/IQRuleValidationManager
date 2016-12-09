@@ -210,6 +210,7 @@
 				TargetAttributes = {
 					BF3AD15F1D8256DB00ECFCE9 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = Y5BV9YG9D7;
 					};
 					BF3AD1781D8256DC00ECFCE9 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -401,6 +402,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = Y5BV9YG9D7;
 				INFOPLIST_FILE = IQRuleValidationManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JunHg.IQRuleValidationManager;
@@ -412,6 +414,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = Y5BV9YG9D7;
 				INFOPLIST_FILE = IQRuleValidationManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JunHg.IQRuleValidationManager;
