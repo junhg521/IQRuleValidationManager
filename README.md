@@ -1,5 +1,6 @@
 #IQRuleValidationManager使用说明
-[![Build Status](https://travis-ci.org/junhg521/IQRuleValidationManager.svg?branch=master)](https://travis-ci.org/junhg521/IQRuleValidationManager)
+<!--[![Build Status](https://travis-ci.org/junhg521/IQRuleValidationManager.svg?branch=master)](https://travis-ci.org/junhg521/IQRuleValidationManager)-->
+[![apm](https://img.shields.io/apm/l/vim-mode.svg)](https://github.com/junhg521/IQRuleValidationManager/blob/master/LICENSE)
 > 该文档主要描述IQRuleValidationManager在开发中使用说明
 
 ## UITextField、UITextView常规验证
