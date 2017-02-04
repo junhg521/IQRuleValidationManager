@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "IQRuleExpression.h"
+#import <IQRuleManager/IQRuleManager.h>
 
 @interface ViewController ()<UITextFieldDelegate>
 

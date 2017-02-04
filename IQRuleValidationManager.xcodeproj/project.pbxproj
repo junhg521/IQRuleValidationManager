@@ -14,12 +14,7 @@
 		BF3AD1701D8256DB00ECFCE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF3AD16F1D8256DB00ECFCE9 /* Assets.xcassets */; };
 		BF3AD1731D8256DB00ECFCE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF3AD1711D8256DB00ECFCE9 /* LaunchScreen.storyboard */; };
 		BF3AD17E1D8256DC00ECFCE9 /* IQRuleValidationManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3AD17D1D8256DC00ECFCE9 /* IQRuleValidationManagerTests.m */; };
-		BF41EC541D869B3C00DFE5A7 /* UITextField+RuleAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = BF41EC461D869B3C00DFE5A7 /* UITextField+RuleAddition.m */; };
-		BF41EC561D869B3C00DFE5A7 /* UITextView+RuleAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = BF41EC4A1D869B3C00DFE5A7 /* UITextView+RuleAddition.m */; };
-		BF41EC581D869B3C00DFE5A7 /* IQIndirectlyImplementProtocolManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BF41EC4E1D869B3C00DFE5A7 /* IQIndirectlyImplementProtocolManager.m */; };
-		BF41EC591D869B3C00DFE5A7 /* IQRuleValidationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BF41EC511D869B3C00DFE5A7 /* IQRuleValidationManager.m */; };
-		BF41EC5A1D869B3C00DFE5A7 /* IQSwizzleUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BF41EC531D869B3C00DFE5A7 /* IQSwizzleUtils.m */; };
-		BF5667F01DB5C15E00017D4C /* NSString+EscapePrefix.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5667EF1DB5C15E00017D4C /* NSString+EscapePrefix.m */; };
+		BF56A9551E446AB0001C0A9F /* IQRuleManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF56A94C1E4464A8001C0A9F /* IQRuleManager.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +24,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = BF3AD15F1D8256DB00ECFCE9;
 			remoteInfo = IQRuleValidationManager;
+		};
+		BF56A94B1E4464A8001C0A9F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF56A9461E4464A8001C0A9F /* IQRuleManager.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BF56A8F51E4453FF001C0A9F;
+			remoteInfo = IQRuleManager;
+		};
+		BF56A94D1E4464A8001C0A9F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF56A9461E4464A8001C0A9F /* IQRuleManager.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BF56A8FE1E4453FF001C0A9F;
+			remoteInfo = IQRuleManagerTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -46,20 +55,7 @@
 		BF3AD1791D8256DC00ECFCE9 /* IQRuleValidationManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IQRuleValidationManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF3AD17D1D8256DC00ECFCE9 /* IQRuleValidationManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IQRuleValidationManagerTests.m; sourceTree = "<group>"; };
 		BF3AD17F1D8256DC00ECFCE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BF41EC451D869B3C00DFE5A7 /* UITextField+RuleAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+RuleAddition.h"; sourceTree = "<group>"; };
-		BF41EC461D869B3C00DFE5A7 /* UITextField+RuleAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+RuleAddition.m"; sourceTree = "<group>"; };
-		BF41EC491D869B3C00DFE5A7 /* UITextView+RuleAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+RuleAddition.h"; sourceTree = "<group>"; };
-		BF41EC4A1D869B3C00DFE5A7 /* UITextView+RuleAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+RuleAddition.m"; sourceTree = "<group>"; };
-		BF41EC4D1D869B3C00DFE5A7 /* IQIndirectlyImplementProtocolManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQIndirectlyImplementProtocolManager.h; sourceTree = "<group>"; };
-		BF41EC4E1D869B3C00DFE5A7 /* IQIndirectlyImplementProtocolManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQIndirectlyImplementProtocolManager.m; sourceTree = "<group>"; };
-		BF41EC4F1D869B3C00DFE5A7 /* IQRuleMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQRuleMacro.h; sourceTree = "<group>"; };
-		BF41EC501D869B3C00DFE5A7 /* IQRuleValidationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQRuleValidationManager.h; sourceTree = "<group>"; };
-		BF41EC511D869B3C00DFE5A7 /* IQRuleValidationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQRuleValidationManager.m; sourceTree = "<group>"; };
-		BF41EC521D869B3C00DFE5A7 /* IQSwizzleUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQSwizzleUtils.h; sourceTree = "<group>"; };
-		BF41EC531D869B3C00DFE5A7 /* IQSwizzleUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQSwizzleUtils.m; sourceTree = "<group>"; };
-		BF5667EE1DB5C15E00017D4C /* NSString+EscapePrefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+EscapePrefix.h"; sourceTree = "<group>"; };
-		BF5667EF1DB5C15E00017D4C /* NSString+EscapePrefix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+EscapePrefix.m"; sourceTree = "<group>"; };
-		BF79ACEB1D992028007E0D83 /* IQRuleExpression.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQRuleExpression.h; sourceTree = "<group>"; };
+		BF56A9461E4464A8001C0A9F /* IQRuleManager.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = IQRuleManager.xcodeproj; path = IQRuleManager/IQRuleManager.xcodeproj; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF56A9551E446AB0001C0A9F /* IQRuleManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,7 +98,7 @@
 		BF3AD1621D8256DB00ECFCE9 /* IQRuleValidationManager */ = {
 			isa = PBXGroup;
 			children = (
-				BF3AD1881D8256F900ECFCE9 /* IQRuleExpression */,
+				BF56A9461E4464A8001C0A9F /* IQRuleManager.xcodeproj */,
 				BF3AD1661D8256DB00ECFCE9 /* AppDelegate.h */,
 				BF3AD1671D8256DB00ECFCE9 /* AppDelegate.m */,
 				BF3AD1691D8256DB00ECFCE9 /* ViewController.h */,
@@ -132,33 +129,13 @@
 			path = IQRuleValidationManagerTests;
 			sourceTree = "<group>";
 		};
-		BF3AD1881D8256F900ECFCE9 /* IQRuleExpression */ = {
+		BF56A9471E4464A8001C0A9F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BF41EC441D869B3C00DFE5A7 /* Category */,
-				BF41EC4D1D869B3C00DFE5A7 /* IQIndirectlyImplementProtocolManager.h */,
-				BF41EC4E1D869B3C00DFE5A7 /* IQIndirectlyImplementProtocolManager.m */,
-				BF79ACEB1D992028007E0D83 /* IQRuleExpression.h */,
-				BF41EC4F1D869B3C00DFE5A7 /* IQRuleMacro.h */,
-				BF41EC501D869B3C00DFE5A7 /* IQRuleValidationManager.h */,
-				BF41EC511D869B3C00DFE5A7 /* IQRuleValidationManager.m */,
-				BF41EC521D869B3C00DFE5A7 /* IQSwizzleUtils.h */,
-				BF41EC531D869B3C00DFE5A7 /* IQSwizzleUtils.m */,
+				BF56A94C1E4464A8001C0A9F /* IQRuleManager.framework */,
+				BF56A94E1E4464A8001C0A9F /* IQRuleManagerTests.xctest */,
 			);
-			path = IQRuleExpression;
-			sourceTree = "<group>";
-		};
-		BF41EC441D869B3C00DFE5A7 /* Category */ = {
-			isa = PBXGroup;
-			children = (
-				BF5667EE1DB5C15E00017D4C /* NSString+EscapePrefix.h */,
-				BF5667EF1DB5C15E00017D4C /* NSString+EscapePrefix.m */,
-				BF41EC451D869B3C00DFE5A7 /* UITextField+RuleAddition.h */,
-				BF41EC461D869B3C00DFE5A7 /* UITextField+RuleAddition.m */,
-				BF41EC491D869B3C00DFE5A7 /* UITextView+RuleAddition.h */,
-				BF41EC4A1D869B3C00DFE5A7 /* UITextView+RuleAddition.m */,
-			);
-			path = Category;
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,6 +206,12 @@
 			mainGroup = BF3AD1571D8256DB00ECFCE9;
 			productRefGroup = BF3AD1611D8256DB00ECFCE9 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = BF56A9471E4464A8001C0A9F /* Products */;
+					ProjectRef = BF56A9461E4464A8001C0A9F /* IQRuleManager.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				BF3AD15F1D8256DB00ECFCE9 /* IQRuleValidationManager */,
@@ -236,6 +219,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		BF56A94C1E4464A8001C0A9F /* IQRuleManager.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = IQRuleManager.framework;
+			remoteRef = BF56A94B1E4464A8001C0A9F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BF56A94E1E4464A8001C0A9F /* IQRuleManagerTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = IQRuleManagerTests.xctest;
+			remoteRef = BF56A94D1E4464A8001C0A9F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		BF3AD15E1D8256DB00ECFCE9 /* Resources */ = {
@@ -263,14 +263,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF3AD16B1D8256DB00ECFCE9 /* ViewController.m in Sources */,
-				BF5667F01DB5C15E00017D4C /* NSString+EscapePrefix.m in Sources */,
-				BF41EC591D869B3C00DFE5A7 /* IQRuleValidationManager.m in Sources */,
-				BF41EC561D869B3C00DFE5A7 /* UITextView+RuleAddition.m in Sources */,
-				BF41EC581D869B3C00DFE5A7 /* IQIndirectlyImplementProtocolManager.m in Sources */,
 				BF3AD1681D8256DB00ECFCE9 /* AppDelegate.m in Sources */,
 				BF3AD1651D8256DB00ECFCE9 /* main.m in Sources */,
-				BF41EC541D869B3C00DFE5A7 /* UITextField+RuleAddition.m in Sources */,
-				BF41EC5A1D869B3C00DFE5A7 /* IQSwizzleUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +346,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -392,6 +387,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -404,8 +400,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = Y5BV9YG9D7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/IQRuleValidationManager",
+				);
 				INFOPLIST_FILE = IQRuleValidationManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.JunHg.IQRuleValidationManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -417,8 +421,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = Y5BV9YG9D7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/IQRuleValidationManager",
+				);
 				INFOPLIST_FILE = IQRuleValidationManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.JunHg.IQRuleValidationManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

@@ -38,15 +38,11 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  @brief  提供对应于IQRuleValidationType所处理的正则表达式,继承的子类都必须提供该方法
  *
- *  @param type 定义的处理类型
- *
  *  @return 返回正则表达式字符串
  */
 - (nonnull NSString *)regularExpressionWhenChanged;
 /**
  *  @brief  提供对应于IQRuleValidationType所处理的正则表达式,继承的子类都必须提供该方法
- *
- *  @param type 定义的处理类型
  *
  *  @return 返回正则表达式字符串
  */

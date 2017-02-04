@@ -8,13 +8,10 @@
 #ifndef IQRuleMacro_h
 #define IQRuleMacro_h
 
-#define __DEBUG__
-
-#ifdef __DEBUG__
+#ifdef DEBUG
 #define DLog(format,...) NSLog((@"[函数名:%s]\n" format), __FUNCTION__, ##__VA_ARGS__);
 #else
 #define DLog(...) do {} while(0);
 #endif
-
 
 #endif /* IQRuleMacro_h */

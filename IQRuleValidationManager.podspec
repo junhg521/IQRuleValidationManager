@@ -9,9 +9,9 @@ Pod::Spec.new do |s|
   s.license      = "MIT"
   s.author       = { "JunHg" => "wujun-5543473@163.com" }
   s.source       = { :git => "https://github.com/junhg521/IQRuleValidationManager.git", :tag => "0.0.1" }
-  s.source_files  = "IQRuleValidationManager","IQRuleValidationManager/IQRuleExpression/**/*.{h,m}"
-  s.exclude_files = "IQRuleValidationManager/IQRuleExpression/Exclude"
-  s.public_header_files = "IQRuleValidationManager/IQRuleExpression/**/*.h"
+  s.source_files  = "IQRuleValidationManager","IQRuleManager/IQRuleManager/**/*.{h,m}"
+  s.exclude_files = "IQRuleValidationManager/IQRuleManager/IQRuleManager/Exclude"
+  s.public_header_files = "IQRuleValidationManager/IQRuleManager/IQRuleManager/**/*.h"
   s.requires_arc = true
   s.platform     = :ios, "7.0"
   s.frameworks   = "UIKit","Foundation"
