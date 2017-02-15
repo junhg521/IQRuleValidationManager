@@ -4,20 +4,40 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>IQRuleValidationManager.xcscheme_^#shared#^_</key>
+		<key>IQRuleValidationManager IQRuleValidationManager.podspec IQRuleValidationManager.xcodeproj IQRuleValidationManagerTests IQRuleValidationManagerUniver.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>IQRuleValidationManager.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>IQRuleValidationManagerUniversal.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>BF3AD15F1D8256DB00ECFCE9</key>
+		<key>BF4716A31E53FC8B00C560B1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BF3AD1781D8256DC00ECFCE9</key>
+		<key>BF4716AC1E53FC8C00C560B1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BF4716D71E53FCFA00C560B1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BF4717141E53FFFA00C560B1</key>
 		<dict>
 			<key>primary</key>
 			<true/>

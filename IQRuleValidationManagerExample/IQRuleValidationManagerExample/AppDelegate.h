@@ -1,9 +1,9 @@
 //
 //  AppDelegate.h
-//  IQRuleValidationManager
+//  IQRuleValidationManagerExample
 //
-//  Created by Jun on 16/9/9.
-//  Copyright © 2016年 JunHg. All rights reserved.
+//  Created by Jun on 2/15/17.
+//  Copyright © 2017 JunHg. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
