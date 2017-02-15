@@ -14,7 +14,6 @@
 		BF3AD1701D8256DB00ECFCE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF3AD16F1D8256DB00ECFCE9 /* Assets.xcassets */; };
 		BF3AD1731D8256DB00ECFCE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF3AD1711D8256DB00ECFCE9 /* LaunchScreen.storyboard */; };
 		BF3AD17E1D8256DC00ECFCE9 /* IQRuleValidationManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3AD17D1D8256DC00ECFCE9 /* IQRuleValidationManagerTests.m */; };
-		BF56A9551E446AB0001C0A9F /* IQRuleManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF56A94C1E4464A8001C0A9F /* IQRuleManager.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,20 +23,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = BF3AD15F1D8256DB00ECFCE9;
 			remoteInfo = IQRuleValidationManager;
-		};
-		BF56A94B1E4464A8001C0A9F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BF56A9461E4464A8001C0A9F /* IQRuleManager.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BF56A8F51E4453FF001C0A9F;
-			remoteInfo = IQRuleManager;
-		};
-		BF56A94D1E4464A8001C0A9F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BF56A9461E4464A8001C0A9F /* IQRuleManager.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BF56A8FE1E4453FF001C0A9F;
-			remoteInfo = IQRuleManagerTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -55,7 +40,6 @@
 		BF3AD1791D8256DC00ECFCE9 /* IQRuleValidationManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IQRuleValidationManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF3AD17D1D8256DC00ECFCE9 /* IQRuleValidationManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IQRuleValidationManagerTests.m; sourceTree = "<group>"; };
 		BF3AD17F1D8256DC00ECFCE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BF56A9461E4464A8001C0A9F /* IQRuleManager.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = IQRuleManager.xcodeproj; path = IQRuleManager/IQRuleManager.xcodeproj; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +47,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF56A9551E446AB0001C0A9F /* IQRuleManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +81,6 @@
 		BF3AD1621D8256DB00ECFCE9 /* IQRuleValidationManager */ = {
 			isa = PBXGroup;
 			children = (
-				BF56A9461E4464A8001C0A9F /* IQRuleManager.xcodeproj */,
 				BF3AD1661D8256DB00ECFCE9 /* AppDelegate.h */,
 				BF3AD1671D8256DB00ECFCE9 /* AppDelegate.m */,
 				BF3AD1691D8256DB00ECFCE9 /* ViewController.h */,
@@ -127,15 +109,6 @@
 				BF3AD17F1D8256DC00ECFCE9 /* Info.plist */,
 			);
 			path = IQRuleValidationManagerTests;
-			sourceTree = "<group>";
-		};
-		BF56A9471E4464A8001C0A9F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				BF56A94C1E4464A8001C0A9F /* IQRuleManager.framework */,
-				BF56A94E1E4464A8001C0A9F /* IQRuleManagerTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,12 +179,6 @@
 			mainGroup = BF3AD1571D8256DB00ECFCE9;
 			productRefGroup = BF3AD1611D8256DB00ECFCE9 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = BF56A9471E4464A8001C0A9F /* Products */;
-					ProjectRef = BF56A9461E4464A8001C0A9F /* IQRuleManager.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				BF3AD15F1D8256DB00ECFCE9 /* IQRuleValidationManager */,
@@ -219,23 +186,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		BF56A94C1E4464A8001C0A9F /* IQRuleManager.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = IQRuleManager.framework;
-			remoteRef = BF56A94B1E4464A8001C0A9F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		BF56A94E1E4464A8001C0A9F /* IQRuleManagerTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = IQRuleManagerTests.xctest;
-			remoteRef = BF56A94D1E4464A8001C0A9F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		BF3AD15E1D8256DB00ECFCE9 /* Resources */ = {

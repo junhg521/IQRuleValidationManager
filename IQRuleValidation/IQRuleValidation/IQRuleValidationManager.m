@@ -52,7 +52,7 @@
 
 + (NSString *)validationClassName
 {
-    return NSStringFromClass([IQRuleValidationManager class]);
+    return NSStringFromClass([self class]);
 }
 
 - (NSString *)regularExpressionWhenChanged

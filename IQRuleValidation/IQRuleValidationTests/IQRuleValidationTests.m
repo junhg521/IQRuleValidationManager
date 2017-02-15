@@ -1,18 +1,18 @@
 //
-//  IQRuleManagerTests.m
-//  IQRuleManagerTests
+//  IQRuleValidationTests.m
+//  IQRuleValidationTests
 //
-//  Created by Jun on 2/3/17.
+//  Created by Jun on 2/4/17.
 //  Copyright © 2017 JunHg. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 
-@interface IQRuleManagerTests : XCTestCase
+@interface IQRuleValidationTests : XCTestCase
 
 @end
 
-@implementation IQRuleManagerTests
+@implementation IQRuleValidationTests
 
 - (void)setUp {
     [super setUp];
