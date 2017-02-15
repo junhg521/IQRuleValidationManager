@@ -1,29 +1,29 @@
 //
-//  IQRuleValidationManager.m
+//  IQBasicRuleValidationManager.m
 //  
 //
 //  Created by Jun on 16/9/6.
 //  Copyright © 2016年 Wanda. All rights reserved.
 //
 
-#import "IQRuleValidationManager.h"
+#import "IQBasicRuleValidationManager.h"
 #import <objc/runtime.h>
 
-@interface IQRuleValidationManager ()
+@interface IQBasicRuleValidationManager ()
 
 @property (nonatomic, assign) IQRuleValidationType type;
 @end
 
-@implementation IQRuleValidationManager
+@implementation IQBasicRuleValidationManager
 
 #pragma mark - ClassMethod
 
-+ (nonnull IQRuleValidationManager *)ruleValidationManagerWithType:(IQRuleValidationType)type
++ (nonnull IQBasicRuleValidationManager *)ruleValidationManagerWithType:(IQRuleValidationType)type
 {
     NSString *className = [[self class] validationClassName];
     if (!className) return nil;
   
-    IQRuleValidationManager *manager = [[NSClassFromString(className) alloc] init];
+    IQBasicRuleValidationManager *manager = [[NSClassFromString(className) alloc] init];
     manager.type = type;
     return manager;
 }

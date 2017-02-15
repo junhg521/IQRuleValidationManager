@@ -1,13 +1,13 @@
 //
 //  UITextField+RuleAddition.h
-//  WandaBP
+//  
 //
 //  Created by Jun on 16/9/7.
 //  Copyright © 2016年 Wanda. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "IQRuleValidationManager.h"
+#import "IQBasicRuleValidationManager.h"
 
 @interface UITextField (RuleAddition)
 
@@ -31,6 +31,6 @@
 
  @return IQRuleValidationManager及自定义的子类
  */
-- (__kindof IQRuleValidationManager *)getRuleManager;
+- (__kindof IQBasicRuleValidationManager *)getRuleManager;
 
 @end

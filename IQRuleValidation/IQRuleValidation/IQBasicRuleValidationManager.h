@@ -1,6 +1,6 @@
 //
-//  IQRuleValidationManager.h
-//  WandaBP
+//  IQBasicRuleValidationManager.h
+//
 //
 //  Created by Jun on 16/9/6.
 //  Copyright © 2016年 Wanda. All rights reserved.
@@ -26,7 +26,7 @@ typedef NS_ENUM(NSUInteger, IQRuleValidationType)
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol IQRuleValidationManagerDelegate <NSObject>
+@protocol IQBasicRuleValidationManagerDelegate <NSObject>
 
 @required
 /**
@@ -52,7 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface IQRuleValidationManager : NSObject<IQRuleValidationManagerDelegate>
+@interface IQBasicRuleValidationManager : NSObject<IQBasicRuleValidationManagerDelegate>
 /**
  *  @brief  实例化IQRuleValidationManager
  *
@@ -60,7 +60,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return IQRuleValidationManager类及子类
  */
-+ (nonnull __kindof IQRuleValidationManager *)ruleValidationManagerWithType:(IQRuleValidationType)type;
++ (nonnull __kindof IQBasicRuleValidationManager *)ruleValidationManagerWithType:(IQRuleValidationType)type;
 /**
  *  @brief  对用户正在输入的内容进行正则表达式判断
  *

@@ -6,7 +6,7 @@
 //
 
 #import "UITextView+RuleAddition.h"
-#import "IQRuleValidationManager.h"
+#import "IQBasicRuleValidationManager.h"
 #import "IQSwizzleUtils.h"
 #import <objc/runtime.h>
 #import "IQRuleMacro.h"
@@ -111,18 +111,18 @@
 
 #pragma mark - public
 
-- (__kindof IQRuleValidationManager *)getRuleManager
+- (__kindof IQBasicRuleValidationManager *)getRuleManager
 {
     NSString *className = [self ruleManagerClassName];
     if ([className length]) {
         id manager = [[NSClassFromString(className) alloc] init];
-        if ([manager isKindOfClass:[IQRuleValidationManager class]]) {
+        if ([manager isKindOfClass:[IQBasicRuleValidationManager class]]) {
             return manager;
         }
         return nil;
     }
     else {
-        IQRuleValidationManager *manager = [IQRuleValidationManager ruleValidationManagerWithType:[self ruleType]];
+        IQBasicRuleValidationManager *manager = [IQBasicRuleValidationManager ruleValidationManagerWithType:[self ruleType]];
         return manager;
     }
 }
@@ -211,7 +211,7 @@
         return NO;
     }
     
-    __kindof IQRuleValidationManager *manager = [self getRuleManager];
+    __kindof IQBasicRuleValidationManager *manager = [self getRuleManager];
     if (manager && textView.text.length > 0) {
         NSError *error = nil;
         return [manager validationInputContentWhileEndEditing:textView.text error:&error];
@@ -239,7 +239,7 @@
         return YES;
     }
     
-    __kindof IQRuleValidationManager *manager = [self getRuleManager];
+    __kindof IQBasicRuleValidationManager *manager = [self getRuleManager];
     if (manager) {
         NSError *error = nil;
         return [manager validationInputContentWhenChanged:[textView.text stringByReplacingCharactersInRange:range withString:text]

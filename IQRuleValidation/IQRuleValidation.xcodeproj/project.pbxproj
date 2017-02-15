@@ -34,8 +34,8 @@
 		BFEEFA8D1E45D20D002720E6 /* IQRuleMacro.h in Headers */ = {isa = PBXBuildFile; fileRef = BFEEFA801E45D20D002720E6 /* IQRuleMacro.h */; };
 		BFEEFA8E1E45D20D002720E6 /* IQRuleManagerPrefixHeader.pch in Headers */ = {isa = PBXBuildFile; fileRef = BFEEFA811E45D20D002720E6 /* IQRuleManagerPrefixHeader.pch */; };
 		BFEEFA8F1E45D20D002720E6 /* IQRuleValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = BFEEFA821E45D20D002720E6 /* IQRuleValidation.h */; };
-		BFEEFA901E45D20D002720E6 /* IQRuleValidationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BFEEFA831E45D20D002720E6 /* IQRuleValidationManager.h */; };
-		BFEEFA911E45D20D002720E6 /* IQRuleValidationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEEFA841E45D20D002720E6 /* IQRuleValidationManager.m */; };
+		BFEEFA901E45D20D002720E6 /* IQBasicRuleValidationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BFEEFA831E45D20D002720E6 /* IQBasicRuleValidationManager.h */; };
+		BFEEFA911E45D20D002720E6 /* IQBasicRuleValidationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEEFA841E45D20D002720E6 /* IQBasicRuleValidationManager.m */; };
 		BFEEFA921E45D20D002720E6 /* IQSwizzleUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = BFEEFA851E45D20D002720E6 /* IQSwizzleUtils.h */; };
 		BFEEFA931E45D20D002720E6 /* IQSwizzleUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEEFA861E45D20D002720E6 /* IQSwizzleUtils.m */; };
 /* End PBXBuildFile section */
@@ -73,8 +73,8 @@
 		BFEEFA801E45D20D002720E6 /* IQRuleMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQRuleMacro.h; sourceTree = "<group>"; };
 		BFEEFA811E45D20D002720E6 /* IQRuleManagerPrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQRuleManagerPrefixHeader.pch; sourceTree = "<group>"; };
 		BFEEFA821E45D20D002720E6 /* IQRuleValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQRuleValidation.h; sourceTree = "<group>"; };
-		BFEEFA831E45D20D002720E6 /* IQRuleValidationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQRuleValidationManager.h; sourceTree = "<group>"; };
-		BFEEFA841E45D20D002720E6 /* IQRuleValidationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQRuleValidationManager.m; sourceTree = "<group>"; };
+		BFEEFA831E45D20D002720E6 /* IQBasicRuleValidationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQBasicRuleValidationManager.h; sourceTree = "<group>"; };
+		BFEEFA841E45D20D002720E6 /* IQBasicRuleValidationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQBasicRuleValidationManager.m; sourceTree = "<group>"; };
 		BFEEFA851E45D20D002720E6 /* IQSwizzleUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQSwizzleUtils.h; sourceTree = "<group>"; };
 		BFEEFA861E45D20D002720E6 /* IQSwizzleUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQSwizzleUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,8 +125,8 @@
 				BFEEFA801E45D20D002720E6 /* IQRuleMacro.h */,
 				BFEEFA811E45D20D002720E6 /* IQRuleManagerPrefixHeader.pch */,
 				BFEEFA821E45D20D002720E6 /* IQRuleValidation.h */,
-				BFEEFA831E45D20D002720E6 /* IQRuleValidationManager.h */,
-				BFEEFA841E45D20D002720E6 /* IQRuleValidationManager.m */,
+				BFEEFA831E45D20D002720E6 /* IQBasicRuleValidationManager.h */,
+				BFEEFA841E45D20D002720E6 /* IQBasicRuleValidationManager.m */,
 				BFEEFA851E45D20D002720E6 /* IQSwizzleUtils.h */,
 				BFEEFA861E45D20D002720E6 /* IQSwizzleUtils.m */,
 				BFEEFA621E45D1E4002720E6 /* IQRuleValidation.h */,
@@ -170,7 +170,7 @@
 				BFEEFA891E45D20D002720E6 /* UITextView+RuleAddition.h in Headers */,
 				BFEEFA701E45D1E4002720E6 /* IQRuleValidation.h in Headers */,
 				BFEEFA921E45D20D002720E6 /* IQSwizzleUtils.h in Headers */,
-				BFEEFA901E45D20D002720E6 /* IQRuleValidationManager.h in Headers */,
+				BFEEFA901E45D20D002720E6 /* IQBasicRuleValidationManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,7 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFEEFA911E45D20D002720E6 /* IQRuleValidationManager.m in Sources */,
+				BFEEFA911E45D20D002720E6 /* IQBasicRuleValidationManager.m in Sources */,
 				BFEEFA881E45D20D002720E6 /* UITextField+RuleAddition.m in Sources */,
 				BFEEFA8A1E45D20D002720E6 /* UITextView+RuleAddition.m in Sources */,
 				BFEEFA931E45D20D002720E6 /* IQSwizzleUtils.m in Sources */,
@@ -521,6 +521,7 @@
 				BFEEFA751E45D1E4002720E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BFEEFA761E45D1E4002720E6 /* Build configuration list for PBXNativeTarget "IQRuleValidationTests" */ = {
 			isa = XCConfigurationList;
@@ -529,6 +530,7 @@
 				BFEEFA781E45D1E4002720E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BFEEFA951E45D273002720E6 /* Build configuration list for PBXAggregateTarget "IQRuleValidationUniversal" */ = {
 			isa = XCConfigurationList;
@@ -537,6 +539,7 @@
 				BFEEFA971E45D273002720E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
