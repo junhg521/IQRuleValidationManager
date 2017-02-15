@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.version      = "0.0.2"
   s.summary      = "IQRuleValidationManager manager UITextField/UITextView input text validations rules"
   s.description  = <<-DESC
-                    A short description of IQRuleValidationManager,IQRuleValidationManager manager UITextField/UITextView validations rules, you don't implement UITextField Delegate or UITextView delegate method just set UITextField proprty which you can attend the same result
+                  A short description of IQRuleValidationManager,IQRuleValidationManager manager UITextField/UITextView validations rules, you don't implement UITextField Delegate or UITextView delegate method just set UITextField proprty which you can attend the same result
                     DESC
   s.homepage     = "https://github.com/junhg521/IQRuleValidationManager"
   s.license      = "MIT"
