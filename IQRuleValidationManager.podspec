@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/junhg521/IQRuleValidationManager"
   s.license      = "MIT"
   s.author       = { "JunHg" => "wujun-5543473@163.com" }
-  s.source       = { :git => "https://github.com/junhg521/IQRuleValidationManager.git", :tag => "0.0.1" }
+  s.source       = { :git => "https://github.com/junhg521/IQRuleValidationManager.git", :tag => "0.0.2" }
   s.source_files  = "IQRuleValidationManager/**/*.{h,m}"
   s.public_header_files = "IQRuleValidationManager/**/*.h"
   s.requires_arc = true
