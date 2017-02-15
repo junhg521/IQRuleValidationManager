@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name         = "IQRuleValidationManager.git"
+  s.name         = "IQRuleValidationManager"
   s.version      = "0.0.1"
   s.summary      = "IQRuleValidationManager manager UITextField/UITextView input text validations rules"
   s.description  = <<-DESC
