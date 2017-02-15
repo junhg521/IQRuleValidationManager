@@ -1,0 +1,578 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		177BDBCA686F8089D29A22E6972CCEFA /* IQRuleValidationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 06FACD3C049C8BFFC6D9563063CE4AE9 /* IQRuleValidationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3E34354FF5601CFE883D06FAD783FDB9 /* IQRuleValidationManager-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E4302E4994CC2424F4F02C4F5E0AEF /* IQRuleValidationManager-dummy.m */; };
+		57A005127E12D950AE68911FABB8D2A8 /* IQBasicRuleValidationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B2B518878A63E1C5D81682421EFBF4 /* IQBasicRuleValidationManager.m */; };
+		66EE7BF8D90878A19AAB6CFD5D2F7A60 /* IQRuleValidationManager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 01DB9A5A2C1D5D01CD74A46C892A34EF /* IQRuleValidationManager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6E37BCB4C36B6187121951D0F9D4634A /* IQSwizzleUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CEB8EBFA50F96C17D56545C358372AD /* IQSwizzleUtils.m */; };
+		84A29C01AC9A53FE763970A94C64A509 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */; };
+		8D271F035F1460B44D147CF233B8D1BE /* UITextView+RuleAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D11A8F962F794B0D27E44ECA963D75B /* UITextView+RuleAddition.m */; };
+		9E6386D5B73EC66043BBE320583DF245 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
+		A1AD103AFF7B8ACAA20DC72AE4075EFE /* Pods-IQRuleValidationManagerExample-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E01C7E6AF7FF7711EC12215F7451C8D /* Pods-IQRuleValidationManagerExample-dummy.m */; };
+		A40CC4965F892A62FB70EAF895B8919C /* IQIndirectlyImplementProtocolManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBF255192844C207B7E86A563DB2530 /* IQIndirectlyImplementProtocolManager.m */; };
+		B0FBB5AC1061BD2138A09F1A580ED3C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
+		B4E9BD9CF9FA3F9CDF52201C7250E9D3 /* Pods-IQRuleValidationManagerExample-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C817650BD281816D0A2B8DA9699F33B /* Pods-IQRuleValidationManagerExample-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B9DF996F2274310C8D9C237EDAEF51B6 /* UITextView+RuleAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E038D5CE5305C77EBD3713748D33EF7 /* UITextView+RuleAddition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C7B51E2C5BB6929E4C360D6771D1EFCE /* IQRuleMacro.h in Headers */ = {isa = PBXBuildFile; fileRef = D2A565F5C1BD9EE84443753B866AEB67 /* IQRuleMacro.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA8A59F5103166BE25DA6B60ABAD6B4B /* IQSwizzleUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D68FB03235F6853BD8DCB0D7E82D39E4 /* IQSwizzleUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD0F3D5E2655EDAEFE123B693DD6D825 /* UITextField+RuleAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BC1B7F3781337C142D2BB54258889C /* UITextField+RuleAddition.m */; };
+		CE09D9C8D4163A95D58DAE9065CA1FFE /* UITextField+RuleAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F614868C21609F435876BAE4C149EB4 /* UITextField+RuleAddition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F3BE9710D60847B1DE42934C8C5DEDC4 /* IQIndirectlyImplementProtocolManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E78EDB412760722A25E381475C6C2B7 /* IQIndirectlyImplementProtocolManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F9E5A6EEE37B04E1375BB023C1C5F408 /* IQBasicRuleValidationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A933B05D1FBB861FF262012A45A0BAB /* IQBasicRuleValidationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2AAC8F5FB9E71388B3827D63BB63C9EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BBC6140DF78012A16B5B8A94DD09A06E;
+			remoteInfo = IQRuleValidationManager;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		01DB9A5A2C1D5D01CD74A46C892A34EF /* IQRuleValidationManager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IQRuleValidationManager-umbrella.h"; sourceTree = "<group>"; };
+		04BC1B7F3781337C142D2BB54258889C /* UITextField+RuleAddition.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITextField+RuleAddition.m"; path = "IQRuleValidationManager/Category/UITextField+RuleAddition.m"; sourceTree = "<group>"; };
+		06FACD3C049C8BFFC6D9563063CE4AE9 /* IQRuleValidationManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IQRuleValidationManager.h; path = IQRuleValidationManager/IQRuleValidationManager.h; sourceTree = "<group>"; };
+		0E038D5CE5305C77EBD3713748D33EF7 /* UITextView+RuleAddition.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITextView+RuleAddition.h"; path = "IQRuleValidationManager/Category/UITextView+RuleAddition.h"; sourceTree = "<group>"; };
+		10119A7C4B10EC9D9328C0660EA4E3A2 /* Pods-IQRuleValidationManagerExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-IQRuleValidationManagerExample.debug.xcconfig"; sourceTree = "<group>"; };
+		15B2B518878A63E1C5D81682421EFBF4 /* IQBasicRuleValidationManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IQBasicRuleValidationManager.m; path = IQRuleValidationManager/IQBasicRuleValidationManager.m; sourceTree = "<group>"; };
+		1BEC9EEA87AB07EF678CDEC63BE5B9F6 /* IQRuleValidationManager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = IQRuleValidationManager.modulemap; sourceTree = "<group>"; };
+		2D11A8F962F794B0D27E44ECA963D75B /* UITextView+RuleAddition.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITextView+RuleAddition.m"; path = "IQRuleValidationManager/Category/UITextView+RuleAddition.m"; sourceTree = "<group>"; };
+		2E01C7E6AF7FF7711EC12215F7451C8D /* Pods-IQRuleValidationManagerExample-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-IQRuleValidationManagerExample-dummy.m"; sourceTree = "<group>"; };
+		2E78EDB412760722A25E381475C6C2B7 /* IQIndirectlyImplementProtocolManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IQIndirectlyImplementProtocolManager.h; path = IQRuleValidationManager/IQIndirectlyImplementProtocolManager.h; sourceTree = "<group>"; };
+		32B2F227BEB494A84E56BD374BEEA575 /* Pods-IQRuleValidationManagerExample-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-IQRuleValidationManagerExample-frameworks.sh"; sourceTree = "<group>"; };
+		33E4302E4994CC2424F4F02C4F5E0AEF /* IQRuleValidationManager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "IQRuleValidationManager-dummy.m"; sourceTree = "<group>"; };
+		3F614868C21609F435876BAE4C149EB4 /* UITextField+RuleAddition.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITextField+RuleAddition.h"; path = "IQRuleValidationManager/Category/UITextField+RuleAddition.h"; sourceTree = "<group>"; };
+		5A933B05D1FBB861FF262012A45A0BAB /* IQBasicRuleValidationManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IQBasicRuleValidationManager.h; path = IQRuleValidationManager/IQBasicRuleValidationManager.h; sourceTree = "<group>"; };
+		5C817650BD281816D0A2B8DA9699F33B /* Pods-IQRuleValidationManagerExample-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-IQRuleValidationManagerExample-umbrella.h"; sourceTree = "<group>"; };
+		616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		6E52378A73B3B0AC03ADB139E7EC9366 /* Pods-IQRuleValidationManagerExample-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-IQRuleValidationManagerExample-acknowledgements.plist"; sourceTree = "<group>"; };
+		6FBF255192844C207B7E86A563DB2530 /* IQIndirectlyImplementProtocolManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IQIndirectlyImplementProtocolManager.m; path = IQRuleValidationManager/IQIndirectlyImplementProtocolManager.m; sourceTree = "<group>"; };
+		7CEB8EBFA50F96C17D56545C358372AD /* IQSwizzleUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IQSwizzleUtils.m; path = IQRuleValidationManager/IQSwizzleUtils.m; sourceTree = "<group>"; };
+		7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		80977209CADDE926B407A15A28CA5B3A /* Pods_IQRuleValidationManagerExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_IQRuleValidationManagerExample.framework; path = "Pods-IQRuleValidationManagerExample.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		86F23ACF9FB7E14164E2FD4EFC3FF3BD /* Pods-IQRuleValidationManagerExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-IQRuleValidationManagerExample.release.xcconfig"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A202D0088F47C98FDAAD56AB39DBE35B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A31842A290AD56D808FBCC4C82E26013 /* IQRuleValidationManager-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IQRuleValidationManager-prefix.pch"; sourceTree = "<group>"; };
+		A3EAD7416453521CA4E95B224117BAF3 /* Pods-IQRuleValidationManagerExample-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-IQRuleValidationManagerExample-acknowledgements.markdown"; sourceTree = "<group>"; };
+		A5C0CA5F02201D98B327A09181365ABB /* IQRuleValidationManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = IQRuleValidationManager.framework; path = IQRuleValidationManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8942BB69ED6E06544964DF42E30FA0E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFDB23F6F60FF62FC4D12D0760CB0000 /* Pods-IQRuleValidationManagerExample.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-IQRuleValidationManagerExample.modulemap"; sourceTree = "<group>"; };
+		D2A565F5C1BD9EE84443753B866AEB67 /* IQRuleMacro.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IQRuleMacro.h; path = IQRuleValidationManager/IQRuleMacro.h; sourceTree = "<group>"; };
+		D68FB03235F6853BD8DCB0D7E82D39E4 /* IQSwizzleUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IQSwizzleUtils.h; path = IQRuleValidationManager/IQSwizzleUtils.h; sourceTree = "<group>"; };
+		D703B5EBD788B3ECABFB3D9C0989C6FB /* Pods-IQRuleValidationManagerExample-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-IQRuleValidationManagerExample-resources.sh"; sourceTree = "<group>"; };
+		E2488939A4C9211E56A3AD47A98573CD /* IQRuleValidationManager.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IQRuleValidationManager.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		062FFBD9D29DA32C42CD56A71878AA95 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9E6386D5B73EC66043BBE320583DF245 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7EA772551544F7F959CE52FA88D171C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0FBB5AC1061BD2138A09F1A580ED3C0 /* Foundation.framework in Frameworks */,
+				84A29C01AC9A53FE763970A94C64A509 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		12D22FDDDF33A16F2674D4C6ACB22B25 /* Pods-IQRuleValidationManagerExample */ = {
+			isa = PBXGroup;
+			children = (
+				A202D0088F47C98FDAAD56AB39DBE35B /* Info.plist */,
+				BFDB23F6F60FF62FC4D12D0760CB0000 /* Pods-IQRuleValidationManagerExample.modulemap */,
+				A3EAD7416453521CA4E95B224117BAF3 /* Pods-IQRuleValidationManagerExample-acknowledgements.markdown */,
+				6E52378A73B3B0AC03ADB139E7EC9366 /* Pods-IQRuleValidationManagerExample-acknowledgements.plist */,
+				2E01C7E6AF7FF7711EC12215F7451C8D /* Pods-IQRuleValidationManagerExample-dummy.m */,
+				32B2F227BEB494A84E56BD374BEEA575 /* Pods-IQRuleValidationManagerExample-frameworks.sh */,
+				D703B5EBD788B3ECABFB3D9C0989C6FB /* Pods-IQRuleValidationManagerExample-resources.sh */,
+				5C817650BD281816D0A2B8DA9699F33B /* Pods-IQRuleValidationManagerExample-umbrella.h */,
+				10119A7C4B10EC9D9328C0660EA4E3A2 /* Pods-IQRuleValidationManagerExample.debug.xcconfig */,
+				86F23ACF9FB7E14164E2FD4EFC3FF3BD /* Pods-IQRuleValidationManagerExample.release.xcconfig */,
+			);
+			name = "Pods-IQRuleValidationManagerExample";
+			path = "Target Support Files/Pods-IQRuleValidationManagerExample";
+			sourceTree = "<group>";
+		};
+		3D55E602C8FF6E2FB6B0E4C33B749FC9 /* IQRuleValidationManager */ = {
+			isa = PBXGroup;
+			children = (
+				5A933B05D1FBB861FF262012A45A0BAB /* IQBasicRuleValidationManager.h */,
+				15B2B518878A63E1C5D81682421EFBF4 /* IQBasicRuleValidationManager.m */,
+				2E78EDB412760722A25E381475C6C2B7 /* IQIndirectlyImplementProtocolManager.h */,
+				6FBF255192844C207B7E86A563DB2530 /* IQIndirectlyImplementProtocolManager.m */,
+				D2A565F5C1BD9EE84443753B866AEB67 /* IQRuleMacro.h */,
+				06FACD3C049C8BFFC6D9563063CE4AE9 /* IQRuleValidationManager.h */,
+				D68FB03235F6853BD8DCB0D7E82D39E4 /* IQSwizzleUtils.h */,
+				7CEB8EBFA50F96C17D56545C358372AD /* IQSwizzleUtils.m */,
+				3F614868C21609F435876BAE4C149EB4 /* UITextField+RuleAddition.h */,
+				04BC1B7F3781337C142D2BB54258889C /* UITextField+RuleAddition.m */,
+				0E038D5CE5305C77EBD3713748D33EF7 /* UITextView+RuleAddition.h */,
+				2D11A8F962F794B0D27E44ECA963D75B /* UITextView+RuleAddition.m */,
+				74AFCC75D5A029A3AF2DEAEA17035953 /* Support Files */,
+			);
+			name = IQRuleValidationManager;
+			path = IQRuleValidationManager;
+			sourceTree = "<group>";
+		};
+		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E6EE98446B568159EE277B68FD442AF0 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5C7EED3B301011F4984B97366BDE2BEA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A5C0CA5F02201D98B327A09181365ABB /* IQRuleValidationManager.framework */,
+				80977209CADDE926B407A15A28CA5B3A /* Pods_IQRuleValidationManagerExample.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		636A2C53B5DB2D09CD66FB3F065DBF14 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				12D22FDDDF33A16F2674D4C6ACB22B25 /* Pods-IQRuleValidationManagerExample */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		74AFCC75D5A029A3AF2DEAEA17035953 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A8942BB69ED6E06544964DF42E30FA0E /* Info.plist */,
+				1BEC9EEA87AB07EF678CDEC63BE5B9F6 /* IQRuleValidationManager.modulemap */,
+				E2488939A4C9211E56A3AD47A98573CD /* IQRuleValidationManager.xcconfig */,
+				33E4302E4994CC2424F4F02C4F5E0AEF /* IQRuleValidationManager-dummy.m */,
+				A31842A290AD56D808FBCC4C82E26013 /* IQRuleValidationManager-prefix.pch */,
+				01DB9A5A2C1D5D01CD74A46C892A34EF /* IQRuleValidationManager-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/IQRuleValidationManager";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
+				A55EC8A8E6719FE8664E5A250C62976A /* Pods */,
+				5C7EED3B301011F4984B97366BDE2BEA /* Products */,
+				636A2C53B5DB2D09CD66FB3F065DBF14 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		A55EC8A8E6719FE8664E5A250C62976A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3D55E602C8FF6E2FB6B0E4C33B749FC9 /* IQRuleValidationManager */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E6EE98446B568159EE277B68FD442AF0 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */,
+				7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		092509A3CCDEC6667F97CCAC8103A52A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4E9BD9CF9FA3F9CDF52201C7250E9D3 /* Pods-IQRuleValidationManagerExample-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6546AFE067AE680392783B00B4C28E7A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9E5A6EEE37B04E1375BB023C1C5F408 /* IQBasicRuleValidationManager.h in Headers */,
+				F3BE9710D60847B1DE42934C8C5DEDC4 /* IQIndirectlyImplementProtocolManager.h in Headers */,
+				C7B51E2C5BB6929E4C360D6771D1EFCE /* IQRuleMacro.h in Headers */,
+				66EE7BF8D90878A19AAB6CFD5D2F7A60 /* IQRuleValidationManager-umbrella.h in Headers */,
+				177BDBCA686F8089D29A22E6972CCEFA /* IQRuleValidationManager.h in Headers */,
+				CA8A59F5103166BE25DA6B60ABAD6B4B /* IQSwizzleUtils.h in Headers */,
+				CE09D9C8D4163A95D58DAE9065CA1FFE /* UITextField+RuleAddition.h in Headers */,
+				B9DF996F2274310C8D9C237EDAEF51B6 /* UITextView+RuleAddition.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		02CD2D3B69A4DD67C9730EEF9FADC27C /* Pods-IQRuleValidationManagerExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7EAE011F10D2A3F49B4BDB7742817FB2 /* Build configuration list for PBXNativeTarget "Pods-IQRuleValidationManagerExample" */;
+			buildPhases = (
+				800E4EF8AF7578B29AB48F76715E7B0C /* Sources */,
+				062FFBD9D29DA32C42CD56A71878AA95 /* Frameworks */,
+				092509A3CCDEC6667F97CCAC8103A52A /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				146FEB45B0BE0238EBF3698BE75DB4DB /* PBXTargetDependency */,
+			);
+			name = "Pods-IQRuleValidationManagerExample";
+			productName = "Pods-IQRuleValidationManagerExample";
+			productReference = 80977209CADDE926B407A15A28CA5B3A /* Pods_IQRuleValidationManagerExample.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		BBC6140DF78012A16B5B8A94DD09A06E /* IQRuleValidationManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 23EB62F5EDA8EE0AF86BBF996243458C /* Build configuration list for PBXNativeTarget "IQRuleValidationManager" */;
+			buildPhases = (
+				C84DBE6AE3D783157AAEE6FD157FC4E5 /* Sources */,
+				D7EA772551544F7F959CE52FA88D171C /* Frameworks */,
+				6546AFE067AE680392783B00B4C28E7A /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IQRuleValidationManager;
+			productName = IQRuleValidationManager;
+			productReference = A5C0CA5F02201D98B327A09181365ABB /* IQRuleValidationManager.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 5C7EED3B301011F4984B97366BDE2BEA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BBC6140DF78012A16B5B8A94DD09A06E /* IQRuleValidationManager */,
+				02CD2D3B69A4DD67C9730EEF9FADC27C /* Pods-IQRuleValidationManagerExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		800E4EF8AF7578B29AB48F76715E7B0C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1AD103AFF7B8ACAA20DC72AE4075EFE /* Pods-IQRuleValidationManagerExample-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C84DBE6AE3D783157AAEE6FD157FC4E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				57A005127E12D950AE68911FABB8D2A8 /* IQBasicRuleValidationManager.m in Sources */,
+				A40CC4965F892A62FB70EAF895B8919C /* IQIndirectlyImplementProtocolManager.m in Sources */,
+				3E34354FF5601CFE883D06FAD783FDB9 /* IQRuleValidationManager-dummy.m in Sources */,
+				6E37BCB4C36B6187121951D0F9D4634A /* IQSwizzleUtils.m in Sources */,
+				CD0F3D5E2655EDAEFE123B693DD6D825 /* UITextField+RuleAddition.m in Sources */,
+				8D271F035F1460B44D147CF233B8D1BE /* UITextView+RuleAddition.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		146FEB45B0BE0238EBF3698BE75DB4DB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = IQRuleValidationManager;
+			target = BBC6140DF78012A16B5B8A94DD09A06E /* IQRuleValidationManager */;
+			targetProxy = 2AAC8F5FB9E71388B3827D63BB63C9EB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		015A368F878AC3E2CEAE21DDE8026304 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		381F0B22B8BCC26F70DD3F085D594A92 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2488939A4C9211E56A3AD47A98573CD /* IQRuleValidationManager.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/IQRuleValidationManager/IQRuleValidationManager-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/IQRuleValidationManager/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/IQRuleValidationManager/IQRuleValidationManager.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = IQRuleValidationManager;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		44CDBB6D11DE06DB64D6268622BDC47E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		61D7F0E75F126A9821DE5C59F6680391 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86F23ACF9FB7E14164E2FD4EFC3FF3BD /* Pods-IQRuleValidationManagerExample.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-IQRuleValidationManagerExample/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-IQRuleValidationManagerExample/Pods-IQRuleValidationManagerExample.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_IQRuleValidationManagerExample;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		865F57D764E2B5419AD44DBB11399DC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10119A7C4B10EC9D9328C0660EA4E3A2 /* Pods-IQRuleValidationManagerExample.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-IQRuleValidationManagerExample/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-IQRuleValidationManagerExample/Pods-IQRuleValidationManagerExample.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_IQRuleValidationManagerExample;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C32FDC1E2E0FF05E90F003C18C738153 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2488939A4C9211E56A3AD47A98573CD /* IQRuleValidationManager.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/IQRuleValidationManager/IQRuleValidationManager-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/IQRuleValidationManager/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/IQRuleValidationManager/IQRuleValidationManager.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = IQRuleValidationManager;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		23EB62F5EDA8EE0AF86BBF996243458C /* Build configuration list for PBXNativeTarget "IQRuleValidationManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C32FDC1E2E0FF05E90F003C18C738153 /* Debug */,
+				381F0B22B8BCC26F70DD3F085D594A92 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				015A368F878AC3E2CEAE21DDE8026304 /* Debug */,
+				44CDBB6D11DE06DB64D6268622BDC47E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7EAE011F10D2A3F49B4BDB7742817FB2 /* Build configuration list for PBXNativeTarget "Pods-IQRuleValidationManagerExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				865F57D764E2B5419AD44DBB11399DC1 /* Debug */,
+				61D7F0E75F126A9821DE5C59F6680391 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

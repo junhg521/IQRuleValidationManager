@@ -1,0 +1,6 @@
+framework module IQRuleValidationManager {
+  umbrella header "IQRuleValidationManager-umbrella.h"
+
+  export *
+  module * { export * }
+}

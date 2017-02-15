@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D070212A0B03E0B71FE52ED /* Pods_IQRuleValidationManagerExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB8D5EC1416C41A2C6F51954 /* Pods_IQRuleValidationManagerExample.framework */; };
 		BF47172A1E54006800C560B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4717291E54006800C560B1 /* main.m */; };
 		BF47172D1E54006800C560B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BF47172C1E54006800C560B1 /* AppDelegate.m */; };
 		BF4717301E54006800C560B1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF47172F1E54006800C560B1 /* ViewController.m */; };
@@ -29,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2EAA75EAE90D85326765D390 /* Pods-IQRuleValidationManagerExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IQRuleValidationManagerExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-IQRuleValidationManagerExample/Pods-IQRuleValidationManagerExample.release.xcconfig"; sourceTree = "<group>"; };
+		65300C2DDE71CB52BD166949 /* Pods-IQRuleValidationManagerExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IQRuleValidationManagerExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IQRuleValidationManagerExample/Pods-IQRuleValidationManagerExample.debug.xcconfig"; sourceTree = "<group>"; };
 		BF4717251E54006800C560B1 /* IQRuleValidationManagerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IQRuleValidationManagerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF4717291E54006800C560B1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BF47172B1E54006800C560B1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -45,6 +48,7 @@
 		BF47174D1E54028700C560B1 /* RuleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuleTableViewCell.h; sourceTree = "<group>"; };
 		BF47174E1E54028700C560B1 /* RuleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RuleTableViewCell.m; sourceTree = "<group>"; };
 		BF47174F1E54028700C560B1 /* RuleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RuleTableViewCell.xib; sourceTree = "<group>"; };
+		FB8D5EC1416C41A2C6F51954 /* Pods_IQRuleValidationManagerExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IQRuleValidationManagerExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D070212A0B03E0B71FE52ED /* Pods_IQRuleValidationManagerExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,12 +70,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08FD6C1E4642F0634D2579CE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				65300C2DDE71CB52BD166949 /* Pods-IQRuleValidationManagerExample.debug.xcconfig */,
+				2EAA75EAE90D85326765D390 /* Pods-IQRuleValidationManagerExample.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		BF47171C1E54006800C560B1 = {
 			isa = PBXGroup;
 			children = (
 				BF4717271E54006800C560B1 /* IQRuleValidationManagerExample */,
 				BF4717411E54006800C560B1 /* IQRuleValidationManagerExampleTests */,
 				BF4717261E54006800C560B1 /* Products */,
+				08FD6C1E4642F0634D2579CE /* Pods */,
+				C77D7A77A9F33332218DA13F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,6 +135,14 @@
 			path = IQRuleValidationManagerExampleTests;
 			sourceTree = "<group>";
 		};
+		C77D7A77A9F33332218DA13F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FB8D5EC1416C41A2C6F51954 /* Pods_IQRuleValidationManagerExample.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -126,9 +150,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF4717471E54006800C560B1 /* Build configuration list for PBXNativeTarget "IQRuleValidationManagerExample" */;
 			buildPhases = (
+				44A7C4319672C9E7BB3A03EC /* [CP] Check Pods Manifest.lock */,
 				BF4717211E54006800C560B1 /* Sources */,
 				BF4717221E54006800C560B1 /* Frameworks */,
 				BF4717231E54006800C560B1 /* Resources */,
+				AE39BCD2A4D16343D6B153B0 /* [CP] Embed Pods Frameworks */,
+				42ABAD6A1499003B99222F58 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -218,6 +245,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		42ABAD6A1499003B99222F58 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IQRuleValidationManagerExample/Pods-IQRuleValidationManagerExample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		44A7C4319672C9E7BB3A03EC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AE39BCD2A4D16343D6B153B0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IQRuleValidationManagerExample/Pods-IQRuleValidationManagerExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BF4717211E54006800C560B1 /* Sources */ = {
@@ -359,6 +434,7 @@
 		};
 		BF4717481E54006800C560B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65300C2DDE71CB52BD166949 /* Pods-IQRuleValidationManagerExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Y5BV9YG9D7;
@@ -371,6 +447,7 @@
 		};
 		BF4717491E54006800C560B1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2EAA75EAE90D85326765D390 /* Pods-IQRuleValidationManagerExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Y5BV9YG9D7;

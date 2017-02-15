@@ -1,0 +1,12 @@
+PODS:
+  - IQRuleValidationManager (0.0.2)
+
+DEPENDENCIES:
+  - IQRuleValidationManager (~> 0.0.2)
+
+SPEC CHECKSUMS:
+  IQRuleValidationManager: f493f81ccbf6f467909d59aed1b5f2351860111d
+
+PODFILE CHECKSUM: 1a68aeaead84c5a74a34858a126786959736e257
+
+COCOAPODS: 1.2.0.rc.1
